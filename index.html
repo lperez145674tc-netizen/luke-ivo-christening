@@ -2,1014 +2,1163 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#c7e6fb">
-  <title>Luke Ivo's Christening</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#c7e6fb">
+<title>Luke Ivo's Christening</title>
 
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Nunito:wght@400;500;600;700;800&family=Parisienne&display=swap');
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Nunito:wght@400;500;600;700;800&family=Parisienne&display=swap" rel="stylesheet">
 
-    :root {
-      --navy: #294878;
-      --blue: #8fc7ed;
-      --pale: #eaf7ff;
-      --sky: #c7e6fb;
-      --ink: #244875;
-      --cream: #fffdf8;
-      --gold: #d7b66e;
-    }
+<style>
+:root {
+    --navy: #294878;
+    --blue: #8fc7ed;
+    --pale: #eaf7ff;
+    --sky: #c7e6fb;
+    --ink: #244875;
+    --cream: #fffdf8;
+    --gold: #d7b66e;
+}
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    body {
-      font-family: 'Nunito', sans-serif;
-      color: var(--ink);
-      background: #eaf6ff;
-      overflow-x: hidden;
-    }
+html {
+    scroll-behavior: smooth;
+}
 
-    button, a { font: inherit; }
-    button { cursor: pointer; }
+body {
+    font-family: 'Nunito', sans-serif;
+    color: var(--ink);
+    background: var(--pale);
+    overflow-x: hidden;
+}
 
-    /* OPENING SCREEN */
-    .intro {
-      min-height: 100svh;
-      display: grid;
-      place-items: center;
-      padding: 35px 18px;
-      position: relative;
-      overflow: hidden;
-      background:
-        radial-gradient(circle at 12% 18%, #ffffff 0 5px, transparent 6px),
-        radial-gradient(circle at 88% 78%, #ffffff 0 5px, transparent 6px),
-        repeating-linear-gradient(90deg, #fff 0 56px, #d8efff 56px 112px);
-      transition: opacity .8s ease, visibility .8s ease;
-    }
+button, a {
+    font: inherit;
+}
 
-    .intro::before, .intro::after {
-      content: "✦  ·  ✧  ·  ✦";
-      position: absolute;
-      color: #78b8e2;
-      font-size: clamp(22px, 4vw, 42px);
-      letter-spacing: 18px;
-      opacity: .65;
-    }
+button {
+    cursor: pointer;
+}
 
-    .intro::before {
-      top: 9%;
-      left: 5%;
-      transform: rotate(-12deg);
-    }
+/* =========================
+   CLICKABLE ENVELOPE INTRO
+========================= */
 
-    .intro::after {
-      bottom: 9%;
-      right: 4%;
-      transform: rotate(12deg);
-    }
+.intro {
+    min-height: 100vh;
+    min-height: 100svh;
+    display: grid;
+    place-items: center;
+    padding: 35px 18px;
+    position: relative;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 12% 18%, white 0 5px, transparent 6px),
+        radial-gradient(circle at 88% 78%, white 0 5px, transparent 6px),
+        repeating-linear-gradient(
+            90deg,
+            #fff 0 56px,
+            #d8efff 56px 112px
+        );
+    transition: opacity .8s ease, visibility .8s ease;
+}
 
-    .intro-inner {
-      width: min(100%, 650px);
-      text-align: center;
-      position: relative;
-      z-index: 1;
-    }
+.intro::before,
+.intro::after {
+    content: "✦ · ✧ · ✦";
+    position: absolute;
+    color: #78b8e2;
+    font-size: clamp(22px, 4vw, 42px);
+    letter-spacing: 18px;
+    opacity: .65;
+}
 
-    .intro-kicker {
-      color: var(--navy);
-      font-size: .85rem;
-      font-weight: 800;
-      letter-spacing: .24em;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-    }
+.intro::before {
+    top: 9%;
+    left: 5%;
+    transform: rotate(-12deg);
+}
 
-    .intro-title {
-      color: var(--navy);
-      font-family: 'Parisienne', cursive;
-      font-size: clamp(2.7rem, 8vw, 5.1rem);
-      line-height: 1.05;
-      margin-bottom: 12px;
-      text-shadow: 2px 3px 0 white;
-    }
+.intro::after {
+    bottom: 9%;
+    right: 4%;
+    transform: rotate(12deg);
+}
 
-    .intro-subtitle {
-      color: #456b98;
-      margin-bottom: 34px;
-      font-size: 1rem;
-    }
+.intro-inner {
+    width: min(100%, 650px);
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
 
-    .envelope-stage {
-      width: min(88vw, 390px);
-      height: 275px;
-      margin: 0 auto;
-      position: relative;
-      perspective: 1100px;
-    }
+.intro-kicker {
+    color: var(--navy);
+    font-size: .85rem;
+    font-weight: 800;
+    letter-spacing: .24em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
 
-    .letter-preview {
-      position: absolute;
-      z-index: 1;
-      width: 82%;
-      height: 225px;
-      left: 9%;
-      bottom: 12px;
-      padding: 25px 18px;
-      background: var(--cream);
-      border: 1px solid #e7dfcf;
-      border-radius: 5px;
-      box-shadow: 0 5px 18px #34567822;
-      transition: transform 1.1s cubic-bezier(.2,.75,.25,1), bottom 1.1s;
-    }
+.intro-title {
+    color: var(--navy);
+    font-family: 'Parisienne', cursive;
+    font-size: clamp(2.7rem, 8vw, 5.1rem);
+    line-height: 1.05;
+    margin-bottom: 12px;
+    text-shadow: 2px 3px white;
+}
 
-    .letter-preview .mini-cross {
-      color: var(--gold);
-      font-size: 1.5rem;
-    }
+.intro-subtitle {
+    color: #456b98;
+    margin-bottom: 34px;
+}
 
-    .letter-preview p {
-      font-family: 'DM Serif Display', serif;
-      margin-top: 9px;
-      font-size: .9rem;
-    }
+.envelope-stage {
+    width: min(88vw, 390px);
+    height: 275px;
+    margin: 0 auto;
+    position: relative;
+    perspective: 1100px;
+}
 
-    .letter-preview strong {
-      display: block;
-      font-family: 'Parisienne', cursive;
-      font-size: 2rem;
-      font-weight: 400;
-      margin-top: 4px;
-    }
+.letter-preview {
+    position: absolute;
+    z-index: 1;
+    width: 82%;
+    height: 225px;
+    left: 9%;
+    bottom: 12px;
+    padding: 25px 18px;
+    background: var(--cream);
+    border: 1px solid #e7dfcf;
+    border-radius: 5px;
+    box-shadow: 0 5px 18px #34567822;
+    transition: transform 1.1s ease, bottom 1.1s;
+}
 
-    .envelope-back {
-      position: absolute;
-      inset: 55px 0 0;
-      z-index: 2;
-      background: #a9d4f2;
-      border-radius: 8px;
-      box-shadow: 0 18px 35px #31547730;
-    }
+.mini-cross {
+    color: var(--gold);
+    font-size: 1.5rem;
+}
 
-    .envelope-front {
-      position: absolute;
-      inset: 55px 0 0;
-      z-index: 4;
-      overflow: hidden;
-      border-radius: 8px;
-      background: linear-gradient(145deg, #c4e5fb, #a5d1ef);
-    }
+.letter-preview p {
+    font-family: 'DM Serif Display', serif;
+    margin-top: 9px;
+    font-size: .9rem;
+}
 
-    .envelope-front::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
+.letter-preview strong {
+    display: block;
+    font-family: 'Parisienne', cursive;
+    font-size: 2rem;
+    font-weight: 400;
+    margin-top: 4px;
+}
+
+.envelope-back {
+    position: absolute;
+    inset: 55px 0 0;
+    z-index: 2;
+    background: #a9d4f2;
+    border-radius: 8px;
+    box-shadow: 0 18px 35px #31547730;
+}
+
+.envelope-front {
+    position: absolute;
+    inset: 55px 0 0;
+    z-index: 4;
+    overflow: hidden;
+    border-radius: 8px;
+    background: linear-gradient(145deg, #c4e5fb, #a5d1ef);
+}
+
+.envelope-front::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
         linear-gradient(32deg, transparent 49.5%, #e2f3ff 50%) left bottom / 50% 100% no-repeat,
         linear-gradient(-32deg, transparent 49.5%, #d7edfc 50%) right bottom / 50% 100% no-repeat;
-    }
+}
 
-    .envelope-front::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      height: 68%;
-      background:
+.envelope-front::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 68%;
+    background:
         linear-gradient(145deg, transparent 49.5%, #d5ecfb 50%) left bottom / 50% 100% no-repeat,
         linear-gradient(-145deg, transparent 49.5%, #c5e3f8 50%) right bottom / 50% 100% no-repeat;
-    }
+}
 
-    .envelope-flap {
-      position: absolute;
-      z-index: 5;
-      top: 55px;
-      left: 0;
-      width: 100%;
-      height: 150px;
-      background: #8bbfe6;
-      clip-path: polygon(0 0, 100% 0, 50% 100%);
-      transform-origin: top center;
-      transition: transform .85s ease, z-index .1s .4s;
-      filter: drop-shadow(0 5px 4px #4779a333);
-    }
+.envelope-flap {
+    position: absolute;
+    z-index: 5;
+    top: 55px;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    background: #8bbfe6;
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    transform-origin: top center;
+    transition: transform .85s ease;
+    filter: drop-shadow(0 5px 4px #4779a333);
+}
 
-    .seal {
-      position: absolute;
-      z-index: 6;
-      left: 50%;
-      top: 145px;
-      transform: translateX(-50%);
-      width: 67px;
-      height: 67px;
-      border-radius: 50%;
-      border: 4px solid #fff3d2;
-      background: radial-gradient(circle at 35% 30%, #f6dfa0, #b88b43 75%);
-      color: white;
-      font-size: 1.8rem;
-      box-shadow: 0 5px 13px #29487840;
-      transition: opacity .4s, transform .4s;
-    }
+.seal {
+    position: absolute;
+    z-index: 6;
+    left: 50%;
+    top: 145px;
+    transform: translateX(-50%);
+    width: 67px;
+    height: 67px;
+    border-radius: 50%;
+    border: 4px solid #fff3d2;
+    background: radial-gradient(circle at 35% 30%, #f6dfa0, #b88b43 75%);
+    color: white;
+    font-size: 1.8rem;
+    box-shadow: 0 5px 13px #29487840;
+    transition: opacity .4s, transform .4s;
+}
 
-    .seal:hover {
-      transform: translateX(-50%) scale(1.08);
-    }
+.seal:hover {
+    transform: translateX(-50%) scale(1.08);
+}
 
-    .tap-hint {
-      margin-top: 15px;
-      color: var(--navy);
-      font-weight: 800;
-      letter-spacing: .1em;
-      font-size: .8rem;
-    }
+.tap-hint {
+    margin-top: 15px;
+    color: var(--navy);
+    font-weight: 800;
+    letter-spacing: .1em;
+    font-size: .8rem;
+}
 
-    .intro.opening .envelope-flap {
-      transform: rotateX(180deg);
-      z-index: 1;
-    }
+.intro.opening .envelope-flap {
+    transform: rotateX(180deg);
+    z-index: 1;
+}
 
-    .intro.opening .letter-preview {
-      transform: translateY(-155px);
-      bottom: 45px;
-    }
+.intro.opening .letter-preview {
+    transform: translateY(-155px);
+    bottom: 45px;
+}
 
-    .intro.opening .seal {
-      opacity: 0;
-      pointer-events: none;
-      transform: translateX(-50%) scale(.6);
-    }
+.intro.opening .seal {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-50%) scale(.6);
+}
 
-    .intro.hide {
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-      position: absolute;
-      inset: 0;
-    }
+.intro.hide {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+}
 
-    /* MAIN WEBSITE */
-    .site {
-      display: none;
-      background: #c7e6fb;
-    }
+/* =========================
+   MAIN WEBSITE
+========================= */
 
-    .site.visible {
-      display: block;
-      animation: pageIn .8s ease both;
-    }
+.site {
+    display: none;
+    background: var(--sky);
+}
 
-    @keyframes pageIn {
-      from {
+.site.visible {
+    display: block;
+    animation: pageIn .8s ease both;
+}
+
+@keyframes pageIn {
+    from {
         opacity: 0;
         transform: translateY(15px);
-      }
-      to {
+    }
+    to {
         opacity: 1;
         transform: none;
-      }
     }
+}
 
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 25px;
-      padding: 13px 18px;
-      background: #fffdf8ee;
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid #a9d2ef;
-    }
+/* NAVIGATION */
 
-    .topbar a {
-      color: var(--navy);
-      text-decoration: none;
-      font-size: .82rem;
-      font-weight: 800;
-      letter-spacing: .08em;
-    }
+.topbar {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    padding: 15px 18px;
+    background: #fffdf8ee;
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid #a9d2ef;
+}
 
-    .topbar a:hover {
-      color: #6ba9d8;
-    }
+.topbar a {
+    color: var(--navy);
+    text-decoration: none;
+    font-size: .82rem;
+    font-weight: 800;
+    letter-spacing: .08em;
+}
 
-    .music-toggle {
-      position: absolute;
-      right: 18px;
-      border: 1px solid #b7d8ef;
-      background: white;
-      color: var(--navy);
-      border-radius: 30px;
-      padding: 7px 12px;
-      font-size: .78rem;
-    }
+.topbar a:hover {
+    color: #6ba9d8;
+}
 
-    /* HERO */
-    .hero {
-      min-height: 650px;
-      padding: 65px 7vw 55px;
-      display: grid;
-      grid-template-columns: minmax(260px, .9fr) minmax(300px, 1.1fr);
-      align-items: center;
-      gap: 45px;
-      background: repeating-linear-gradient(90deg, #fff 0 70px, #c9e7fb 70px 140px);
-      position: relative;
-      overflow: hidden;
-    }
+/* HERO */
 
-    .hero::after {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 25px;
-      background: var(--navy);
-    }
+.hero {
+    min-height: 650px;
+    padding: 65px 7vw 55px;
+    display: grid;
+    grid-template-columns: minmax(260px, .9fr) minmax(300px, 1.1fr);
+    align-items: center;
+    gap: 45px;
+    background: repeating-linear-gradient(
+        90deg,
+        #fff 0 70px,
+        #c9e7fb 70px 140px
+    );
+    position: relative;
+    overflow: hidden;
+}
 
-    .hero-photo-wrap {
-      justify-self: center;
-      position: relative;
-      width: min(390px, 75vw);
-    }
+.hero::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 25px;
+    background: var(--navy);
+}
 
-    .hero-photo {
-      width: 100%;
-      aspect-ratio: 1;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 14px solid #285c7b;
-      box-shadow: 0 10px 25px #24487530;
-      background: #dcefff;
-    }
+.hero-photo-wrap {
+    justify-self: center;
+    position: relative;
+    width: min(390px, 75vw);
+    aspect-ratio: 1;
+}
 
-    .star {
-      position: absolute;
-      color: #6eadd9;
-      text-shadow: 1px 2px white;
-      font-size: 3.4rem;
-    }
+.hero-photo {
+    display: block;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 14px solid #285c7b;
+    box-shadow: 0 10px 25px #24487530;
+    background: #dcefff;
+}
 
-    .star.one {
-      left: -32px;
-      bottom: 25px;
-    }
+.star {
+    position: absolute;
+    color: #6eadd9;
+    text-shadow: 1px 2px white;
+    font-size: 3.4rem;
+}
 
-    .star.two {
-      right: -22px;
-      top: 18px;
-      font-size: 2.5rem;
-    }
+.star.one {
+    left: -32px;
+    bottom: 25px;
+}
 
-    .hero-copy {
-      text-align: center;
-      position: relative;
-      z-index: 1;
-    }
+.star.two {
+    right: -22px;
+    top: 18px;
+    font-size: 2.5rem;
+}
 
-    .eyebrow {
-      font-size: .95rem;
-      letter-spacing: .28em;
-      font-weight: 800;
-      color: var(--navy);
-      text-transform: uppercase;
-    }
+.hero-copy {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
 
-    .hero h1 {
-      font-family: 'Parisienne', cursive;
-      color: #244878;
-      font-size: clamp(4rem, 8vw, 7.4rem);
-      line-height: .95;
-      margin: 18px 0;
-      text-shadow: 3px 4px white;
-    }
+.eyebrow {
+    font-size: .95rem;
+    letter-spacing: .28em;
+    font-weight: 800;
+    color: var(--navy);
+    text-transform: uppercase;
+}
 
-    .hero h2 {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(1.15rem, 2.5vw, 1.7rem);
-      font-weight: 400;
-      color: #315b8b;
-    }
+.hero h1 {
+    font-family: 'Parisienne', cursive;
+    color: #244878;
+    font-size: clamp(4rem, 8vw, 7.4rem);
+    line-height: .95;
+    margin: 18px 0;
+    text-shadow: 3px 4px white;
+}
 
-    .hero-date {
-      display: inline-block;
-      margin-top: 28px;
-      padding: 12px 25px;
-      border-top: 1px solid #4779a3;
-      border-bottom: 1px solid #4779a3;
-      font-weight: 800;
-      letter-spacing: .16em;
-    }
+.hero h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.15rem, 2.5vw, 1.7rem);
+    font-weight: 400;
+    color: #315b8b;
+}
 
-    /* SECTIONS */
-    .section {
-      padding: 75px 7vw;
-      text-align: center;
-      position: relative;
-    }
+.hero-date {
+    display: inline-block;
+    margin-top: 28px;
+    padding: 12px 25px;
+    border-top: 1px solid #4779a3;
+    border-bottom: 1px solid #4779a3;
+    font-weight: 800;
+    letter-spacing: .12em;
+}
 
-    .section-heading {
-      font-family: 'DM Serif Display', serif;
-      color: var(--navy);
-      font-size: clamp(2rem, 4vw, 3rem);
-      margin-bottom: 12px;
-    }
+/* GENERAL SECTIONS */
 
-    .section-sub {
-      max-width: 760px;
-      margin: 0 auto 35px;
-      line-height: 1.8;
-      color: #315b8b;
-      font-size: 1.05rem;
-    }
+.section {
+    padding: 75px 7vw;
+    text-align: center;
+    position: relative;
+}
 
-    .details-section {
-      background: #c7e6fb;
-    }
+.section-heading {
+    font-family: 'DM Serif Display', serif;
+    color: var(--navy);
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 12px;
+}
 
-    .detail-grid {
-      max-width: 1000px;
-      margin: 35px auto 0;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
+.section-sub {
+    max-width: 760px;
+    margin: 0 auto 35px;
+    line-height: 1.8;
+    color: #315b8b;
+    font-size: 1.05rem;
+}
 
-    .detail-card {
-      background: #f9fdff;
-      border: 1px solid #b5d9f1;
-      border-radius: 18px;
-      padding: 30px 18px;
-      box-shadow: 0 8px 22px #315b8b12;
-    }
+/* EVENT DETAILS */
 
-    .detail-icon {
-      font-size: 2.1rem;
-      margin-bottom: 12px;
-    }
+.details-section {
+    background: #c7e6fb;
+}
 
-    .detail-card h3 {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.3rem;
-      margin-bottom: 8px;
-    }
+.detail-grid {
+    max-width: 1000px;
+    margin: 35px auto 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
 
-    .detail-card p {
-      line-height: 1.6;
-    }
+.detail-card {
+    background: #f9fdff;
+    border: 1px solid #b5d9f1;
+    border-radius: 18px;
+    padding: 30px 18px;
+    box-shadow: 0 8px 22px #315b8b12;
+}
 
-    .map-link, .back-top {
-      display: inline-block;
-      margin-top: 28px;
-      padding: 12px 23px;
-      border-radius: 30px;
-      background: var(--navy);
-      color: white;
-      text-decoration: none;
-      font-weight: 800;
-      transition: transform .2s, background .2s;
-    }
+.detail-image {
+    display: block;
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    margin: 0 auto 15px;
+}
 
-    .map-link:hover, .back-top:hover {
-      transform: translateY(-2px);
-      background: #3b6698;
-    }
+.detail-card h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+}
 
-    /* PHOTO GALLERY */
-    .gallery-section {
-      background: #f3faff;
-    }
+.detail-card p {
+    line-height: 1.6;
+}
 
+.map-link,
+.back-top {
+    display: inline-block;
+    margin-top: 28px;
+    padding: 12px 23px;
+    border-radius: 30px;
+    background: var(--navy);
+    color: white;
+    text-decoration: none;
+    font-weight: 800;
+    transition: transform .2s, background .2s;
+}
+
+.map-link:hover,
+.back-top:hover {
+    transform: translateY(-2px);
+    background: #3b6698;
+}
+
+/* PHOTO GALLERY */
+
+.gallery-section {
+    background: #f3faff;
+}
+
+.gallery {
+    max-width: 1100px;
+    margin: 35px auto 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+    align-items: center;
+}
+
+.polaroid {
+    background: white;
+    padding: 12px 12px 42px;
+    box-shadow: 0 8px 22px #29487820;
+    transform: rotate(-3deg);
+}
+
+.polaroid:nth-child(even) {
+    transform: rotate(3deg) translateY(15px);
+}
+
+.polaroid img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 4.5;
+    object-fit: cover;
+    background: #d8edfb;
+}
+
+.polaroid p {
+    font-family: 'Parisienne', cursive;
+    font-size: 1.5rem;
+    margin-top: 9px;
+}
+
+/* GIFT GUIDE */
+
+.gift-section {
+    background: #c7e6fb;
+    overflow: hidden;
+}
+
+.gift-intro {
+    max-width: 900px;
+    margin: 0 auto 35px;
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.05rem, 2.4vw, 1.45rem);
+    line-height: 1.8;
+    color: #17549a;
+}
+
+.gift-grid {
+    max-width: 1050px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.gift-card {
+    background: #f8fcff;
+    border: 1px solid #b6d9f0;
+    border-radius: 16px;
+    padding: 22px 15px;
+    min-height: 190px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 8px 18px #315b8b12;
+}
+
+.gift-emoji {
+    font-size: 3.2rem;
+    margin-bottom: 12px;
+    filter: drop-shadow(0 4px 2px #315b8b20);
+}
+
+.gift-card h3 {
+    font-family: 'DM Serif Display', serif;
+    font-weight: 400;
+    font-size: 1.2rem;
+    line-height: 1.4;
+}
+
+.gift-note {
+    margin: 35px auto 0;
+    max-width: 850px;
+    line-height: 1.8;
+    color: #315b8b;
+}
+
+/* CLOSING */
+
+.closing {
+    background: #294878;
+    color: white;
+    padding: 75px 20px 55px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.teddy-decoration {
+    display: block;
+    width: 125px;
+    height: 125px;
+    object-fit: contain;
+    margin: 0 auto 15px;
+}
+
+.closing .section-heading {
+    color: white;
+}
+
+.closing p {
+    max-width: 650px;
+    margin: 12px auto;
+    line-height: 1.8;
+    color: #e4f3ff;
+}
+
+.closing .signature {
+    font-family: 'Parisienne', cursive;
+    font-size: 2.5rem;
+    color: #d5ebfb;
+    margin-top: 20px;
+}
+
+.closing .back-top {
+    background: white;
+    color: var(--navy);
+}
+
+.tiny-footer {
+    background: #203b66;
+    color: #d7eaff;
+    text-align: center;
+    padding: 15px;
+    font-size: .8rem;
+}
+
+/* IMAGE FALLBACK */
+
+img {
+    color: var(--navy);
+}
+
+img:not([src]),
+img[src=""] {
+    visibility: hidden;
+}
+
+/* MOBILE RESPONSIVENESS */
+
+@media (max-width: 900px) {
     .gallery {
-      max-width: 1050px;
-      margin: 35px auto 0;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 25px;
-      align-items: center;
-    }
-
-    .polaroid {
-      background: white;
-      padding: 12px 12px 42px;
-      box-shadow: 0 8px 22px #29487820;
-      transform: rotate(-3deg);
-    }
-
-    .polaroid:nth-child(2) {
-      transform: rotate(3deg) translateY(18px);
-    }
-
-    .polaroid:nth-child(3) {
-      transform: rotate(-2deg);
-    }
-
-    .polaroid img {
-      display: block;
-      width: 100%;
-      aspect-ratio: 4 / 4.5;
-      object-fit: cover;
-      background: #d8edfb;
-    }
-
-    .polaroid p {
-      font-family: 'Parisienne', cursive;
-      font-size: 1.6rem;
-      margin-top: 9px;
-    }
-
-    /* GIFT GUIDE */
-    .gift-section {
-      background: #c7e6fb;
-      overflow: hidden;
-    }
-
-    .gift-intro {
-      max-width: 900px;
-      margin: 0 auto 35px;
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(1.05rem, 2.4vw, 1.45rem);
-      line-height: 1.8;
-      color: #17549a;
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 650px;
     }
 
     .gift-grid {
-      max-width: 1050px;
-      margin: auto;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+        grid-template-columns: repeat(2, 1fr);
     }
+}
 
-    .gift-card {
-      background: #f8fcff;
-      border: 1px solid #b6d9f0;
-      border-radius: 16px;
-      padding: 22px 15px;
-      min-height: 190px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      box-shadow: 0 8px 18px #315b8b12;
-    }
-
-    .gift-emoji {
-      font-size: 3.2rem;
-      margin-bottom: 12px;
-      filter: drop-shadow(0 4px 2px #315b8b20);
-    }
-
-    .gift-card h3 {
-      font-family: 'DM Serif Display', serif;
-      font-weight: 400;
-      font-size: 1.2rem;
-      line-height: 1.4;
-    }
-
-    .gift-note {
-      margin: 35px auto 0;
-      max-width: 850px;
-      line-height: 1.8;
-      color: #315b8b;
-    }
-
-    /* CLOSING */
-    .closing {
-      background: #294878;
-      color: white;
-      padding: 75px 20px 55px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .closing .section-heading {
-      color: white;
-    }
-
-    .closing p {
-      max-width: 650px;
-      margin: 12px auto;
-      line-height: 1.8;
-      color: #e4f3ff;
-    }
-
-    .closing .signature {
-      font-family: 'Parisienne', cursive;
-      font-size: 2.5rem;
-      color: #d5ebfb;
-      margin-top: 20px;
-    }
-
-    .closing .back-top {
-      background: white;
-      color: var(--navy);
-    }
-
-    .tiny-footer {
-      background: #203b66;
-      color: #d7eaff;
-      text-align: center;
-      padding: 15px;
-      font-size: .8rem;
-    }
-
-    /* MOBILE RESPONSIVENESS */
-    @media (max-width: 760px) {
-      .topbar {
+@media (max-width: 760px) {
+    .topbar {
         gap: 13px;
         flex-wrap: wrap;
-        padding-right: 100px;
-      }
+        padding: 13px 10px;
+    }
 
-      .topbar a {
+    .topbar a {
         font-size: .7rem;
-      }
+    }
 
-      .music-toggle {
-        right: 8px;
-      }
-
-      .hero {
+    .hero {
         grid-template-columns: 1fr;
         gap: 28px;
         padding: 55px 7vw 65px;
-      }
-
-      .hero-photo-wrap {
-        width: min(290px, 70vw);
-      }
-
-      .hero-copy {
-        padding-bottom: 12px;
-      }
-
-      .detail-grid {
-        grid-template-columns: 1fr;
-        max-width: 430px;
-      }
-      .detail-image {
-    width: 65px;
-    height: 65px;
-    object-fit: contain;
-    vertical-align: middle;
     }
 
-      .gallery {
+    .hero-photo-wrap {
+        width: min(290px, 70vw);
+    }
+
+    .hero-copy {
+        padding-bottom: 12px;
+    }
+
+    .detail-grid {
+        grid-template-columns: 1fr;
+        max-width: 430px;
+    }
+
+    .gallery {
         grid-template-columns: 1fr;
         max-width: 330px;
         gap: 22px;
-      }
-
-      .polaroid:nth-child(2) {
-        transform: rotate(2deg);
-      }
-
-      .gift-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .section {
-        padding: 60px 6vw;
-      }
     }
 
-    @media (max-width: 420px) {
-      .envelope-stage {
+    .polaroid:nth-child(even) {
+        transform: rotate(2deg);
+    }
+
+    .section {
+        padding: 60px 6vw;
+    }
+}
+
+@media (max-width: 420px) {
+    .envelope-stage {
         height: 250px;
-      }
+    }
 
-      .letter-preview {
+    .letter-preview {
         height: 205px;
-      }
+    }
 
-      .intro-subtitle {
+    .intro-subtitle {
         font-size: .9rem;
-      }
+    }
 
-      .gift-grid {
+    .gift-grid {
         grid-template-columns: 1fr 1fr;
         gap: 10px;
-      }
-
-      .gift-card {
-        min-height: 160px;
-        padding: 15px 9px;
-      }
-
-      .gift-card h3 {
-        font-size: 1rem;
-      }
-
-      .gift-emoji {
-        font-size: 2.6rem;
-      }
     }
 
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
+    .gift-card {
+        min-height: 160px;
+        padding: 15px 9px;
+    }
+
+    .gift-card h3 {
+        font-size: 1rem;
+    }
+
+    .gift-emoji {
+        font-size: 2.6rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
         scroll-behavior: auto !important;
         transition-duration: .01ms !important;
         animation-duration: .01ms !important;
-      }
     }
-  </style>
+}
+</style>
 </head>
 
 <body>
 
-  <!-- CLICKABLE ENVELOPE INTRO -->
-  <section class="intro" id="intro" aria-label="Open your invitation">
+<!-- CLICKABLE ENVELOPE INTRO -->
+
+<section class="intro" id="intro" aria-label="Open your invitation">
+
     <div class="intro-inner">
 
-      <p class="intro-kicker">A little note, sealed with love</p>
+        <p class="intro-kicker">A little note, sealed with love</p>
 
-      <h1 class="intro-title">You Are Invited</h1>
+        <h1 class="intro-title">You Are Invited</h1>
 
-      <p class="intro-subtitle">
-        A special day is waiting to be celebrated with you.
-      </p>
-
-      <div class="envelope-stage">
-
-        <div class="letter-preview">
-          <div class="mini-cross">✝</div>
-          <p>PLEASE JOIN US FOR THE HOLY CHRISTENING OF</p>
-          <strong>Luke Ivo</strong>
-          <p>November 21, 2026 · 8:00 AM</p>
-        </div>
-
-        <div class="envelope-back"></div>
-        <div class="envelope-front"></div>
-        <div class="envelope-flap"></div>
-
-        <button class="seal" id="openSeal" aria-label="Open the invitation">
-          ✝
-        </button>
-
-      </div>
-
-      <p class="tap-hint" id="tapHint">TAP THE SEAL TO OPEN</p>
-
-    </div>
-  </section>
-
-  <!-- FULL INVITATION WEBSITE -->
-  <main class="site" id="site">
-
-    <nav class="topbar" aria-label="Main navigation">
-      <a href="#home">HOME</a>
-      <a href="#details">EVENT DETAILS</a>
-      <a href="#gallery">GALLERY</a>
-      <a href="#gifts">GIFT GUIDE</a>
-
-      <button class="music-toggle" id="musicToggle" type="button" aria-label="Toggle music">
-        ♫ Music: Off
-      </button>
-    </nav>
-
-    <!-- HERO -->
-    <section class="hero" id="home">
-
-      <div class="<img src="luke main.jpeg">">
-
-        <img
-          class="<img src="luke main.jpeg">"
-          src="luke%20main.jpeg"
-          alt="Photo of Luke Ivo"
-          onerror="this.style.display='none'; this.parentElement.style.background='#d8edfb'; this.parentElement.style.borderRadius='50%'; this.parentElement.style.minHeight='260px';"
-        >
-
-        <span class="star one">✦</span>
-        <span class="star two">✧</span>
-
-      </div>
-
-      <div class="hero-copy">
-
-        <p class="eyebrow">You are cordially invited to</p>
-
-        <h1>Luke Ivo's<br>Christening</h1>
-
-        <h2>A blessed new beginning</h2>
-
-        <p class="hero-date">
-          SATURDAY · NOVEMBER 21 · 8:00 AM · 2026
+        <p class="intro-subtitle">
+            A special day is waiting to be celebrated with you.
         </p>
 
-      </div>
+        <div class="envelope-stage">
+
+            <div class="letter-preview">
+                <div class="mini-cross">✝</div>
+
+                <p>PLEASE JOIN US FOR THE HOLY CHRISTENING OF</p>
+
+                <strong>Luke Ivo</strong>
+
+                <p>November 21, 2026 · 8:00 AM</p>
+            </div>
+
+            <div class="envelope-back"></div>
+            <div class="envelope-front"></div>
+            <div class="envelope-flap"></div>
+
+            <button class="seal" id="openSeal" aria-label="Open the invitation">
+                ✝
+            </button>
+
+        </div>
+
+        <p class="tap-hint" id="tapHint">
+            TAP THE SEAL TO OPEN
+        </p>
+
+    </div>
+</section>
+
+
+<!-- FULL INVITATION WEBSITE -->
+
+<main class="site" id="site">
+
+    <!-- NAVIGATION -->
+
+    <nav class="topbar" aria-label="Main navigation">
+        <a href="#home">HOME</a>
+        <a href="#details">EVENT DETAILS</a>
+        <a href="#gallery">GALLERY</a>
+        <a href="#gifts">GIFT GUIDE</a>
+    </nav>
+
+
+    <!-- HERO SECTION -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-photo-wrap">
+
+            <img
+                class="hero-photo"
+                src="./luke%20main.jpeg"
+                alt="Photo of Luke Ivo"
+            >
+
+            <span class="star one">✦</span>
+            <span class="star two">✧</span>
+
+        </div>
+
+        <div class="hero-copy">
+
+            <p class="eyebrow">
+                You are cordially invited to
+            </p>
+
+            <h1>
+                Luke Ivo's<br>Christening
+            </h1>
+
+            <h2>A blessed new beginning</h2>
+
+            <p class="hero-date">
+                SATURDAY · NOVEMBER 21 · 8:00 AM · 2026
+            </p>
+
+        </div>
 
     </section>
+
 
     <!-- EVENT DETAILS -->
+
     <section class="section details-section" id="details">
 
-      <p class="eyebrow">A day of faith, love & blessings</p>
+        <p class="eyebrow">
+            A day of faith, love & blessings
+        </p>
 
-      <h2 class="section-heading">The Celebration</h2>
+        <h2 class="section-heading">
+            The Celebration
+        </h2>
 
-      <p class="section-sub">
-        Together with our families, we joyfully invite you to celebrate
-        the Holy Christening of our beloved Luke Ivo P. Fulguerinas.
-        Your presence will make this special day even more meaningful.
-      </p>
+        <p class="section-sub">
+            Together with our families, we joyfully invite you to celebrate
+            the Holy Christening of our beloved Luke Ivo P. Fulguerinas.
+            Your presence will make this special day even more meaningful.
+        </p>
 
-      <div class="detail-grid">
+        <div class="detail-grid">
 
-        <article class="detail-card">
-      <img src="./calendar.png" class="detail-image" alt="Calendar">
-          <h3>Date</h3>
-          <p>Saturday<br>November 21, 2026</p>
-        </article>
+            <article class="detail-card">
 
-        <article class="detail-card">
-          <img src="./time.png" class="detail-image" alt="Calendar">
-          <h3>Time</h3>
-          <p>8:00 in the morning</p>
-        </article>
+                <img
+                    src="./calendar.jpg"
+                    class="detail-image"
+                    alt="Calendar illustration"
+                >
 
-        <article class="detail-card">
-          <img src="./church.png" class="detail-image" alt="Calendar">
-          <h3>Church</h3>
-          <p>New Christ the King Cathedral</p>
-        </article>
+                <h3>Date</h3>
 
-      </div>
+                <p>
+                    Saturday<br>
+                    November 21, 2026
+                </p>
 
-      <a
-        class="map-link"
-        href="https://www.google.com/maps/search/?api=1&query=New+Christ+the+King+Cathedral"
-        target="_blank"
-        rel="noopener"
-      >
-        View Church Location ↗
-      </a>
+            </article>
+
+
+            <article class="detail-card">
+
+                <img
+                    src="./time.jpg"
+                    class="detail-image"
+                    alt="Clock illustration"
+                >
+
+                <h3>Time</h3>
+
+                <p>
+                    8:00 in the morning
+                </p>
+
+            </article>
+
+
+            <article class="detail-card">
+
+                <img
+                    src="./church.jpg"
+                    class="detail-image"
+                    alt="Church illustration"
+                >
+
+                <h3>Church</h3>
+
+                <p>
+                    New Christ the King Cathedral
+                </p>
+
+            </article>
+
+        </div>
+
+        <a
+            class="map-link"
+            href="https://www.google.com/maps/search/?api=1&query=New+Christ+the+King+Cathedral"
+            target="_blank"
+            rel="noopener"
+        >
+            View Church Location ↗
+        </a>
 
     </section>
+
 
     <!-- PHOTO GALLERY -->
+
     <section class="section gallery-section" id="gallery">
 
-      <p class="eyebrow">Our little blessing</p>
+        <p class="eyebrow">
+            Our little blessing
+        </p>
 
-      <h2 class="section-heading">Luke Ivo's Gallery</h2>
+        <h2 class="section-heading">
+            Luke Ivo's Gallery
+        </h2>
 
-      <p class="section-sub">
-        A few precious moments of our little one.
-      </p>
+        <p class="section-sub">
+            A few precious moments of our little one.
+        </p>
 
-      <div class="gallery">
+        <div class="gallery">
 
-        <figure class="polaroid">
-      <img src="./images/luke%201.jpeg" alt="Luke Ivo">
-          <p>Little sunshine</p>
-        </figure>
+            <figure class="polaroid">
 
-        <figure class="polaroid">
-        <img src="./images/luke%201.jpeg" alt="Luke Ivo">
-          <p>Sweetest smile</p>
-        </figure>
+                <img
+                    src="./luke%20main.jpeg"
+                    alt="Luke Ivo main photo"
+                >
 
-        <figure class="polaroid">
-        <img src="./images/luke%203.jpeg" alt="Luke Ivo">
-          <p>Our little blessing</p>
-        </figure>
+                <p>Little sunshine</p>
 
-      </div>
+            </figure>
+
+
+            <figure class="polaroid">
+
+                <img
+                    src="./luke%201.jpeg"
+                    alt="Luke Ivo photo 1"
+                >
+
+                <p>Sweetest smile</p>
+
+            </figure>
+
+
+            <figure class="polaroid">
+
+                <img
+                    src="./luke%202.jpeg"
+                    alt="Luke Ivo photo 2"
+                >
+
+                <p>Our little blessing</p>
+
+            </figure>
+
+
+            <figure class="polaroid">
+
+                <img
+                    src="./luke%203.jpeg"
+                    alt="Luke Ivo photo 3"
+                >
+
+                <p>Our precious angel</p>
+
+            </figure>
+
+        </div>
 
     </section>
+
 
     <!-- GIFT GUIDE -->
+
     <section class="section gift-section" id="gifts">
 
-      <p class="eyebrow">A thoughtful little guide</p>
+        <p class="eyebrow">
+            A thoughtful little guide
+        </p>
 
-      <h2 class="section-heading">Gift Guide</h2>
+        <h2 class="section-heading">
+            Gift Guide
+        </h2>
 
-      <p class="gift-intro">
-        If you're considering giving a gift, we would love and appreciate
-        things that we actually need. This helps us make the most of your
-        generosity while keeping things practical and meaningful.
-      </p>
+        <p class="gift-intro">
+            If you're considering giving a gift, we would love and appreciate
+            things that we actually need. This helps us make the most of your
+            generosity while keeping things practical and meaningful.
+        </p>
 
-      <div class="gift-grid">
+        <div class="gift-grid">
 
-        <article class="gift-card">
-          <div class="gift-emoji">🧻</div>
-          <h3>Unilove Wipes<br>(Unscented)</h3>
-        </article>
+            <article class="gift-card">
+                <div class="gift-emoji">🧻</div>
+                <h3>Unilove Wipes<br>(Unscented)</h3>
+            </article>
 
-        <article class="gift-card">
-          <div class="gift-emoji">🧺</div>
-          <h3>Laundry Detergent</h3>
-        </article>
+            <article class="gift-card">
+                <div class="gift-emoji">🧺</div>
+                <h3>Laundry Detergent</h3>
+            </article>
 
-        <article class="gift-card">
-          <div class="gift-emoji">🧴</div>
-          <h3>Cetaphil Baby<br>Wash & Shampoo</h3>
-        </article>
+            <article class="gift-card">
+                <div class="gift-emoji">🧴</div>
+                <h3>Cetaphil Baby<br>Wash & Shampoo</h3>
+            </article>
 
-        <article class="gift-card">
-          <div class="gift-emoji">👶</div>
-          <h3>EQ Dry Tape<br>(Medium)</h3>
-        </article>
+            <article class="gift-card">
+                <div class="gift-emoji">👶</div>
+                <h3>EQ Dry Tape<br>(Medium)</h3>
+            </article>
 
-        <article class="gift-card">
-          <div class="gift-emoji">🫧</div>
-          <h3>Tiny Buds<br>Baby Bottle Wash</h3>
-        </article>
+            <article class="gift-card">
+                <div class="gift-emoji">🫧</div>
+                <h3>Tiny Buds<br>Baby Bottle Wash</h3>
+            </article>
 
-      </div>
+        </div>
 
-      <p class="gift-note">
-        Just because we give ideas doesn't mean you're obligated to give.
-        Your presence is the most precious gift you can give. Any gift will
-        be warmly appreciated. Thank you for sharing in our joy! 💙
-      </p>
+        <p class="gift-note">
+            Just because we give ideas doesn't mean you're obligated to give.
+            Your presence is the most precious gift you can give. Any gift will
+            be warmly appreciated. Thank you for sharing in our joy! 💙
+        </p>
 
     </section>
 
-    <!-- THANK YOU -->
+
+    <!-- THANK YOU SECTION -->
+
     <section class="closing">
 
-      <div style="font-size:2.3rem; margin-bottom:12px;">
-        🧸 ✨ 💙 ✨
-      </div>
+        <img
+            src="./teddy.jpg"
+            class="teddy-decoration"
+            alt="Cute teddy bear decoration"
+        >
 
-      <h2 class="section-heading">Thank You!</h2>
+        <h2 class="section-heading">
+            Thank You!
+        </h2>
 
-      <p>
-        We are grateful to have you share this beautiful milestone with
-        our family. May this day be filled with love, joy, and God's blessings.
-      </p>
+        <p>
+            We are grateful to have you share this beautiful milestone with
+            our family. May this day be filled with love, joy, and God's blessings.
+        </p>
 
-      <p class="signature">With love and blessings</p>
+        <p class="signature">
+            With love and blessings
+        </p>
 
-      <p>Luke Ivo P. Fulguerinas and Family</p>
+        <p>
+            Luke Ivo P. Fulguerinas and Family
+        </p>
 
-      <a class="back-top" href="#home">Back to Top ↑</a>
+        <a class="back-top" href="#home">
+            Back to Top ↑
+        </a>
 
     </section>
 
+
+    <!-- FOOTER -->
+
     <footer class="tiny-footer">
-      Made with love for Luke Ivo's special day · November 21, 2026
+        Made with love for Luke Ivo's special day · November 21, 2026
     </footer>
 
-  </main>
+</main>
 
-  <script>
-    const intro = document.getElementById('intro');
-    const site = document.getElementById('site');
-    const seal = document.getElementById('openSeal');
-    const hint = document.getElementById('tapHint');
 
-    let opened = false;
+<!-- JAVASCRIPT -->
 
-    seal.addEventListener('click', () => {
+<script>
 
-      if (opened) return;
+const intro = document.getElementById('intro');
+const site = document.getElementById('site');
+const seal = document.getElementById('openSeal');
+const hint = document.getElementById('tapHint');
 
-      opened = true;
+let opened = false;
 
-      intro.classList.add('opening');
+seal.addEventListener('click', () => {
 
-      hint.textContent = 'OPENING YOUR INVITATION...';
+    if (opened) return;
 
-      window.setTimeout(() => {
+    opened = true;
+
+    intro.classList.add('opening');
+
+    hint.textContent = 'OPENING YOUR INVITATION...';
+
+    window.setTimeout(() => {
 
         intro.classList.add('hide');
 
         site.classList.add('visible');
 
         window.scrollTo({
-          top: 0,
-          behavior: 'instant'
+            top: 0,
+            behavior: 'auto'
         });
 
-      }, 1450);
+    }, 1450);
 
-    });
+});
 
-    // Music button visual toggle.
-    // Add an audio file if you want actual background music.
-    const musicToggle = document.getElementById('musicToggle');
-
-    let musicOn = false;
-
-    musicToggle.addEventListener('click', () => {
-
-      musicOn = !musicOn;
-
-      musicToggle.textContent = musicOn
-        ? '♫ Music: On (add audio file)'
-        : '♫ Music: Off';
-
-    });
-  </script>
+</script>
 
 </body>
 </html>
