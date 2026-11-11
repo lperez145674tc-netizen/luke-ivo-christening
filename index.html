@@ -1,27 +1,14 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#c7e6fb">
+
 <title>Luke Ivo's Christening</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Nunito:wght@400;500;600;700;800&family=Parisienne&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Great+Vibes&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
 
 <style>
-:root {
-    --navy: #294878;
-    --blue: #8fc7ed;
-    --pale: #eaf7ff;
-    --sky: #c7e6fb;
-    --ink: #244875;
-    --cream: #fffdf8;
-    --gold: #d7b66e;
-}
-
 * {
     margin: 0;
     padding: 0;
@@ -33,1132 +20,617 @@ html {
 }
 
 body {
-    font-family: 'Nunito', sans-serif;
-    color: var(--ink);
-    background: var(--pale);
+    font-family: 'Playfair Display', serif;
+    background: #c5e4fc;
+    color: #294c80;
     overflow-x: hidden;
 }
 
-button, a {
-    font: inherit;
-}
+/* MAIN LANDING PAGE */
 
-button {
-    cursor: pointer;
-}
-
-/* =========================
-   CLICKABLE ENVELOPE INTRO
-========================= */
-
-.intro {
+.landing-page {
+    position: relative;
+    width: 90%;
+    max-width: 1600px;
     min-height: 100vh;
-    min-height: 100svh;
-    display: grid;
-    place-items: center;
-    padding: 35px 18px;
-    position: relative;
+    margin: auto;
+    background: #c2e2fa;
     overflow: hidden;
-    background:
-        radial-gradient(circle at 12% 18%, white 0 5px, transparent 6px),
-        radial-gradient(circle at 88% 78%, white 0 5px, transparent 6px),
-        repeating-linear-gradient(
-            90deg,
-            #fff 0 56px,
-            #d8efff 56px 112px
-        );
-    transition: opacity .8s ease, visibility .8s ease;
 }
 
-.intro::before,
-.intro::after {
-    content: "✦ · ✧ · ✦";
-    position: absolute;
-    color: #78b8e2;
-    font-size: clamp(22px, 4vw, 42px);
-    letter-spacing: 18px;
-    opacity: .65;
-}
-
-.intro::before {
-    top: 9%;
-    left: 5%;
-    transform: rotate(-12deg);
-}
-
-.intro::after {
-    bottom: 9%;
-    right: 4%;
-    transform: rotate(12deg);
-}
-
-.intro-inner {
-    width: min(100%, 650px);
-    text-align: center;
-    position: relative;
-    z-index: 1;
-}
-
-.intro-kicker {
-    color: var(--navy);
-    font-size: .85rem;
-    font-weight: 800;
-    letter-spacing: .24em;
-    text-transform: uppercase;
-    margin-bottom: 12px;
-}
-
-.intro-title {
-    color: var(--navy);
-    font-family: 'Parisienne', cursive;
-    font-size: clamp(2.7rem, 8vw, 5.1rem);
-    line-height: 1.05;
-    margin-bottom: 12px;
-    text-shadow: 2px 3px white;
-}
-
-.intro-subtitle {
-    color: #456b98;
-    margin-bottom: 34px;
-}
-
-.envelope-stage {
-    width: min(88vw, 390px);
-    height: 275px;
-    margin: 0 auto;
-    position: relative;
-    perspective: 1100px;
-}
-
-.letter-preview {
-    position: absolute;
-    z-index: 1;
-    width: 82%;
-    height: 225px;
-    left: 9%;
-    bottom: 12px;
-    padding: 25px 18px;
-    background: var(--cream);
-    border: 1px solid #e7dfcf;
-    border-radius: 5px;
-    box-shadow: 0 5px 18px #34567822;
-    transition: transform 1.1s ease, bottom 1.1s;
-}
-
-.mini-cross {
-    color: var(--gold);
-    font-size: 1.5rem;
-}
-
-.letter-preview p {
-    font-family: 'DM Serif Display', serif;
-    margin-top: 9px;
-    font-size: .9rem;
-}
-
-.letter-preview strong {
-    display: block;
-    font-family: 'Parisienne', cursive;
-    font-size: 2rem;
-    font-weight: 400;
-    margin-top: 4px;
-}
-
-.envelope-back {
-    position: absolute;
-    inset: 55px 0 0;
-    z-index: 2;
-    background: #a9d4f2;
-    border-radius: 8px;
-    box-shadow: 0 18px 35px #31547730;
-}
-
-.envelope-front {
-    position: absolute;
-    inset: 55px 0 0;
-    z-index: 4;
-    overflow: hidden;
-    border-radius: 8px;
-    background: linear-gradient(145deg, #c4e5fb, #a5d1ef);
-}
-
-.envelope-front::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background:
-        linear-gradient(32deg, transparent 49.5%, #e2f3ff 50%) left bottom / 50% 100% no-repeat,
-        linear-gradient(-32deg, transparent 49.5%, #d7edfc 50%) right bottom / 50% 100% no-repeat;
-}
-
-.envelope-front::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 68%;
-    background:
-        linear-gradient(145deg, transparent 49.5%, #d5ecfb 50%) left bottom / 50% 100% no-repeat,
-        linear-gradient(-145deg, transparent 49.5%, #c5e3f8 50%) right bottom / 50% 100% no-repeat;
-}
-
-.envelope-flap {
-    position: absolute;
-    z-index: 5;
-    top: 55px;
-    left: 0;
-    width: 100%;
-    height: 150px;
-    background: #8bbfe6;
-    clip-path: polygon(0 0, 100% 0, 50% 100%);
-    transform-origin: top center;
-    transition: transform .85s ease;
-    filter: drop-shadow(0 5px 4px #4779a333);
-}
-
-.seal {
-    position: absolute;
-    z-index: 6;
-    left: 50%;
-    top: 145px;
-    transform: translateX(-50%);
-    width: 67px;
-    height: 67px;
-    border-radius: 50%;
-    border: 4px solid #fff3d2;
-    background: radial-gradient(circle at 35% 30%, #f6dfa0, #b88b43 75%);
-    color: white;
-    font-size: 1.8rem;
-    box-shadow: 0 5px 13px #29487840;
-    transition: opacity .4s, transform .4s;
-}
-
-.seal:hover {
-    transform: translateX(-50%) scale(1.08);
-}
-
-.tap-hint {
-    margin-top: 15px;
-    color: var(--navy);
-    font-weight: 800;
-    letter-spacing: .1em;
-    font-size: .8rem;
-}
-
-.intro.opening .envelope-flap {
-    transform: rotateX(180deg);
-    z-index: 1;
-}
-
-.intro.opening .letter-preview {
-    transform: translateY(-155px);
-    bottom: 45px;
-}
-
-.intro.opening .seal {
-    opacity: 0;
-    pointer-events: none;
-    transform: translateX(-50%) scale(.6);
-}
-
-.intro.hide {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    position: absolute;
-    inset: 0;
-}
-
-/* =========================
-   MAIN WEBSITE
-========================= */
-
-.site {
-    display: none;
-    background: var(--sky);
-}
-
-.site.visible {
-    display: block;
-    animation: pageIn .8s ease both;
-}
-
-@keyframes pageIn {
-    from {
-        opacity: 0;
-        transform: translateY(15px);
-    }
-    to {
-        opacity: 1;
-        transform: none;
-    }
-}
-
-/* NAVIGATION */
-
-.topbar {
-    position: sticky;
-    top: 0;
-    z-index: 20;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 25px;
-    padding: 15px 18px;
-    background: #fffdf8ee;
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid #a9d2ef;
-}
-
-.topbar a {
-    color: var(--navy);
-    text-decoration: none;
-    font-size: .82rem;
-    font-weight: 800;
-    letter-spacing: .08em;
-}
-
-.topbar a:hover {
-    color: #6ba9d8;
-}
-
-/* HERO */
+/* STRIPED BACKGROUND */
 
 .hero {
-    min-height: 650px;
-    padding: 65px 7vw 55px;
-    display: grid;
-    grid-template-columns: minmax(260px, .9fr) minmax(300px, 1.1fr);
-    align-items: center;
-    gap: 45px;
+    position: relative;
+    min-height: 510px;
     background: repeating-linear-gradient(
         90deg,
-        #fff 0 70px,
-        #c9e7fb 70px 140px
+        #ffffff 0px,
+        #ffffff 85px,
+        #c3e4fc 85px,
+        #c3e4fc 170px
     );
-    position: relative;
-    overflow: hidden;
 }
+
+/* NAVY DIVIDER */
 
 .hero::after {
     content: "";
     position: absolute;
     bottom: 0;
     left: 0;
-    right: 0;
-    height: 25px;
-    background: var(--navy);
+    width: 100%;
+    height: 20px;
+    background: #294a80;
 }
 
-.hero-photo-wrap {
-    justify-self: center;
-    position: relative;
-    width: min(390px, 75vw);
-    aspect-ratio: 1;
+/* MAIN BABY PHOTO */
+
+.main-photo {
+    position: absolute;
+    top: 65px;
+    left: 7%;
+    width: 465px;
+    height: 465px;
+    border-radius: 50%;
+    border: 17px solid #285775;
+    overflow: hidden;
+    background: #d5ecfa;
+    z-index: 2;
 }
 
-.hero-photo {
-    display: block;
+.main-photo img {
     width: 100%;
     height: 100%;
-    aspect-ratio: 1;
     object-fit: cover;
-    border-radius: 50%;
-    border: 14px solid #285c7b;
-    box-shadow: 0 10px 25px #24487530;
-    background: #dcefff;
 }
+
+/* HERO TEXT */
+
+.invitation-text {
+    position: absolute;
+    top: 0;
+    right: 5%;
+    width: 48%;
+    text-align: center;
+    z-index: 3;
+}
+
+.invitation-text .subtitle {
+    font-family: 'Amatic SC', cursive;
+    font-size: clamp(35px, 5vw, 65px);
+    font-weight: bold;
+    letter-spacing: 8px;
+    color: #294a80;
+    background: #ffffff;
+    display: inline-block;
+    padding: 0 10px;
+}
+
+.invitation-text h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(75px, 10vw, 145px);
+    line-height: .95;
+    color: #294a80;
+    text-shadow: 4px 5px 0 white;
+    margin-top: 20px;
+}
+
+/* DECORATIONS */
 
 .star {
     position: absolute;
-    color: #6eadd9;
-    text-shadow: 1px 2px white;
-    font-size: 3.4rem;
+    color: #75b5e6;
+    text-shadow: 2px 3px 4px #7baed2;
+    z-index: 4;
 }
 
 .star.one {
-    left: -32px;
-    bottom: 25px;
+    top: 330px;
+    left: 3%;
+    font-size: 65px;
 }
 
 .star.two {
-    right: -22px;
-    top: 18px;
-    font-size: 2.5rem;
+    top: 395px;
+    left: 10%;
+    font-size: 100px;
 }
 
-.hero-copy {
-    text-align: center;
+.star.three {
+    top: 365px;
+    left: 20%;
+    font-size: 55px;
+}
+
+.rattle {
+    position: absolute;
+    left: 39%;
+    bottom: 25px;
+    font-size: 120px;
+    transform: rotate(-35deg);
+    z-index: 5;
+}
+
+/* BUNTING */
+
+.bunting {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 230px;
+    height: 100px;
+    z-index: 4;
+    display: flex;
+    justify-content: space-around;
+}
+
+.bunting span {
+    width: 40px;
+    height: 75px;
+    background: #5c9ab1;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 75%, 0 100%);
+}
+
+.bunting span:nth-child(2) {
+    background: #a4d5dc;
+    height: 95px;
+}
+
+.bunting span:nth-child(3) {
+    background: #3d788c;
+}
+
+/* EVENT SECTION */
+
+.event-section {
     position: relative;
-    z-index: 1;
-}
-
-.eyebrow {
-    font-size: .95rem;
-    letter-spacing: .28em;
-    font-weight: 800;
-    color: var(--navy);
-    text-transform: uppercase;
-}
-
-.hero h1 {
-    font-family: 'Parisienne', cursive;
-    color: #244878;
-    font-size: clamp(4rem, 8vw, 7.4rem);
-    line-height: .95;
-    margin: 18px 0;
-    text-shadow: 3px 4px white;
-}
-
-.hero h2 {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(1.15rem, 2.5vw, 1.7rem);
-    font-weight: 400;
-    color: #315b8b;
-}
-
-.hero-date {
-    display: inline-block;
-    margin-top: 28px;
-    padding: 12px 25px;
-    border-top: 1px solid #4779a3;
-    border-bottom: 1px solid #4779a3;
-    font-weight: 800;
-    letter-spacing: .12em;
-}
-
-/* GENERAL SECTIONS */
-
-.section {
-    padding: 75px 7vw;
-    text-align: center;
-    position: relative;
-}
-
-.section-heading {
-    font-family: 'DM Serif Display', serif;
-    color: var(--navy);
-    font-size: clamp(2rem, 4vw, 3rem);
-    margin-bottom: 12px;
-}
-
-.section-sub {
-    max-width: 760px;
-    margin: 0 auto 35px;
-    line-height: 1.8;
-    color: #315b8b;
-    font-size: 1.05rem;
+    min-height: 450px;
+    padding: 80px 5% 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 30px;
+    background: #c2e2fa;
 }
 
 /* EVENT DETAILS */
 
-.details-section {
-    background: #c7e6fb;
+.event-details {
+    flex: 1;
+    max-width: 550px;
+    text-align: center;
+    padding-top: 5px;
 }
 
-.detail-grid {
-    max-width: 1000px;
-    margin: 35px auto 0;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
+.event-details .month {
+    font-family: 'Amatic SC', cursive;
+    font-size: 38px;
+    letter-spacing: 7px;
+    color: #294a80;
+    margin-bottom: 5px;
 }
 
-.detail-card {
-    background: #f9fdff;
-    border: 1px solid #b5d9f1;
-    border-radius: 18px;
-    padding: 30px 18px;
-    box-shadow: 0 8px 22px #315b8b12;
+.date-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
 }
 
-.detail-image {
-    display: block;
-    width: 100px;
-    height: 100px;
-    object-fit: contain;
-    margin: 0 auto 15px;
+.date-row span {
+    font-family: 'Amatic SC', cursive;
+    font-size: 32px;
+    letter-spacing: 4px;
+    border-top: 2px solid #477da6;
+    border-bottom: 2px solid #477da6;
+    padding: 8px 0;
 }
 
-.detail-card h3 {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.3rem;
-    margin-bottom: 8px;
+.date-row strong {
+    font-size: 70px;
+    font-weight: normal;
 }
 
-.detail-card p {
-    line-height: 1.6;
+.year {
+    font-family: 'Amatic SC', cursive;
+    font-size: 40px;
+    letter-spacing: 8px;
+    margin: 8px 0 20px;
 }
 
-.map-link,
-.back-top {
-    display: inline-block;
-    margin-top: 28px;
-    padding: 12px 23px;
-    border-radius: 30px;
-    background: var(--navy);
-    color: white;
-    text-decoration: none;
-    font-weight: 800;
-    transition: transform .2s, background .2s;
-}
-
-.map-link:hover,
-.back-top:hover {
-    transform: translateY(-2px);
-    background: #3b6698;
+.church {
+    font-family: 'Amatic SC', cursive;
+    font-size: 35px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    line-height: 1.5;
 }
 
 /* PHOTO GALLERY */
 
-.gallery-section {
-    background: #f3faff;
-}
-
 .gallery {
-    max-width: 1100px;
-    margin: 35px auto 0;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 22px;
+    flex: 1.2;
+    display: flex;
     align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding-top: 0;
 }
 
 .polaroid {
-    background: white;
-    padding: 12px 12px 42px;
-    box-shadow: 0 8px 22px #29487820;
-    transform: rotate(-3deg);
+    width: 31%;
+    background: #fffdf6;
+    padding: 10px 10px 35px;
+    box-shadow: 0 5px 15px #0002;
+    transform: rotate(-10deg);
+    transition: .4s;
 }
 
-.polaroid:nth-child(even) {
-    transform: rotate(3deg) translateY(15px);
+.polaroid:nth-child(2) {
+    transform: rotate(2deg) translateY(45px);
+}
+
+.polaroid:nth-child(3) {
+    transform: rotate(12deg) translateY(-25px);
+}
+
+.polaroid:hover {
+    transform: rotate(0deg) translateY(-10px) scale(1.05);
+    z-index: 5;
 }
 
 .polaroid img {
-    display: block;
     width: 100%;
-    aspect-ratio: 4 / 4.5;
+    height: 210px;
     object-fit: cover;
-    background: #d8edfb;
 }
 
-.polaroid p {
-    font-family: 'Parisienne', cursive;
-    font-size: 1.5rem;
-    margin-top: 9px;
+/* TEDDY BEAR */
+
+.teddy {
+    position: absolute;
+    right: 2%;
+    bottom: -10px;
+    width: 180px;
+    z-index: 2;
 }
 
-/* GIFT GUIDE */
-
-.gift-section {
-    background: #c7e6fb;
-    overflow: hidden;
+.teddy img {
+    width: 100%;
+    height: auto;
 }
 
-.gift-intro {
-    max-width: 900px;
-    margin: 0 auto 35px;
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(1.05rem, 2.4vw, 1.45rem);
-    line-height: 1.8;
-    color: #17549a;
-}
+/* LOWER SECTION */
 
-.gift-grid {
-    max-width: 1050px;
-    margin: auto;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-}
-
-.gift-card {
-    background: #f8fcff;
-    border: 1px solid #b6d9f0;
-    border-radius: 16px;
-    padding: 22px 15px;
-    min-height: 190px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 8px 18px #315b8b12;
-}
-
-.gift-emoji {
-    font-size: 3.2rem;
-    margin-bottom: 12px;
-    filter: drop-shadow(0 4px 2px #315b8b20);
-}
-
-.gift-card h3 {
-    font-family: 'DM Serif Display', serif;
-    font-weight: 400;
-    font-size: 1.2rem;
-    line-height: 1.4;
-}
-
-.gift-note {
-    margin: 35px auto 0;
-    max-width: 850px;
-    line-height: 1.8;
-    color: #315b8b;
-}
-
-/* CLOSING */
-
-.closing {
-    background: #294878;
-    color: white;
-    padding: 75px 20px 55px;
+.message-section {
     text-align: center;
-    position: relative;
-    overflow: hidden;
+    padding: 75px 20px;
+    background: #eaf6ff;
 }
 
-.teddy-decoration {
-    display: block;
-    width: 125px;
-    height: 125px;
-    object-fit: contain;
-    margin: 0 auto 15px;
+.message-section h2 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 55px;
+    color: #294a80;
+    margin-bottom: 15px;
 }
 
-.closing .section-heading {
-    color: white;
-}
-
-.closing p {
+.message-section p {
+    font-size: 17px;
+    line-height: 1.9;
     max-width: 650px;
-    margin: 12px auto;
-    line-height: 1.8;
-    color: #e4f3ff;
+    margin: auto;
 }
 
-.closing .signature {
-    font-family: 'Parisienne', cursive;
-    font-size: 2.5rem;
-    color: #d5ebfb;
-    margin-top: 20px;
+.message-section .verse {
+    margin-top: 25px;
+    font-style: italic;
+    color: #477da6;
 }
 
-.closing .back-top {
-    background: white;
-    color: var(--navy);
-}
-
-.tiny-footer {
-    background: #203b66;
-    color: #d7eaff;
+footer {
+    background: #294a80;
+    color: white;
     text-align: center;
-    padding: 15px;
-    font-size: .8rem;
+    padding: 20px;
+    font-size: 14px;
 }
 
-/* IMAGE FALLBACK */
+/* RESPONSIVE DESIGN */
 
-img {
-    color: var(--navy);
-}
+@media (max-width: 1000px) {
 
-img:not([src]),
-img[src=""] {
-    visibility: hidden;
-}
-
-/* MOBILE RESPONSIVENESS */
-
-@media (max-width: 900px) {
-    .gallery {
-        grid-template-columns: repeat(2, 1fr);
-        max-width: 650px;
-    }
-
-    .gift-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 760px) {
-    .topbar {
-        gap: 13px;
-        flex-wrap: wrap;
-        padding: 13px 10px;
-    }
-
-    .topbar a {
-        font-size: .7rem;
+    .landing-page {
+        width: 100%;
     }
 
     .hero {
-        grid-template-columns: 1fr;
-        gap: 28px;
-        padding: 55px 7vw 65px;
+        min-height: 700px;
     }
 
-    .hero-photo-wrap {
-        width: min(290px, 70vw);
+    .main-photo {
+        width: 330px;
+        height: 330px;
+        left: 50%;
+        top: 40px;
+        transform: translateX(-50%);
     }
 
-    .hero-copy {
-        padding-bottom: 12px;
+    .invitation-text {
+        width: 100%;
+        right: 0;
+        top: 390px;
     }
 
-    .detail-grid {
-        grid-template-columns: 1fr;
-        max-width: 430px;
+    .invitation-text h1 {
+        font-size: 90px;
+    }
+
+    .invitation-text .subtitle {
+        font-size: 40px;
+    }
+
+    .rattle {
+        display: none;
+    }
+
+    .event-section {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .event-details {
+        max-width: 100%;
+        width: 100%;
     }
 
     .gallery {
-        grid-template-columns: 1fr;
-        max-width: 330px;
-        gap: 22px;
+        width: 90%;
+        margin: 50px auto;
     }
 
-    .polaroid:nth-child(even) {
-        transform: rotate(2deg);
-    }
-
-    .section {
-        padding: 60px 6vw;
+    .polaroid img {
+        height: 180px;
     }
 }
 
-@media (max-width: 420px) {
-    .envelope-stage {
-        height: 250px;
+@media (max-width: 600px) {
+
+    .hero {
+        min-height: 580px;
     }
 
-    .letter-preview {
-        height: 205px;
+    .main-photo {
+        width: 260px;
+        height: 260px;
+        border-width: 12px;
     }
 
-    .intro-subtitle {
-        font-size: .9rem;
+    .invitation-text {
+        top: 320px;
     }
 
-    .gift-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
+    .invitation-text h1 {
+        font-size: 68px;
     }
 
-    .gift-card {
-        min-height: 160px;
-        padding: 15px 9px;
+    .invitation-text .subtitle {
+        font-size: 30px;
+        letter-spacing: 5px;
     }
 
-    .gift-card h3 {
-        font-size: 1rem;
+    .bunting {
+        width: 120px;
+        transform: scale(.7);
+        transform-origin: top right;
     }
 
-    .gift-emoji {
-        font-size: 2.6rem;
+    .star.one {
+        top: 250px;
+        font-size: 40px;
+    }
+
+    .star.two {
+        top: 280px;
+        font-size: 60px;
+    }
+
+    .star.three {
+        top: 280px;
+        font-size: 35px;
+    }
+
+    .event-section {
+        padding: 55px 15px;
+    }
+
+    .event-details .month {
+        font-size: 32px;
+    }
+
+    .date-row {
+        gap: 8px;
+    }
+
+    .date-row span {
+        font-size: 23px;
+        letter-spacing: 2px;
+    }
+
+    .date-row strong {
+        font-size: 55px;
+    }
+
+    .year {
+        font-size: 32px;
+    }
+
+    .church {
+        font-size: 27px;
+    }
+
+    .gallery {
+        gap: 5px;
+        width: 100%;
+    }
+
+    .polaroid {
+        padding: 6px 6px 20px;
+    }
+
+    .polaroid img {
+        height: 115px;
+    }
+
+    .teddy {
+        width: 95px;
+        opacity: .8;
+    }
+
+    .message-section h2 {
+        font-size: 42px;
     }
 }
 
-@media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        scroll-behavior: auto !important;
-        transition-duration: .01ms !important;
-        animation-duration: .01ms !important;
-    }
-}
 </style>
 </head>
 
 <body>
 
-<!-- CLICKABLE ENVELOPE INTRO -->
-
-<section class="intro" id="intro" aria-label="Open your invitation">
-
-    <div class="intro-inner">
-
-        <p class="intro-kicker">A little note, sealed with love</p>
-
-        <h1 class="intro-title">You Are Invited</h1>
-
-        <p class="intro-subtitle">
-            A special day is waiting to be celebrated with you.
-        </p>
-
-        <div class="envelope-stage">
-
-            <div class="letter-preview">
-                <div class="mini-cross">✝</div>
-
-                <p>PLEASE JOIN US FOR THE HOLY CHRISTENING OF</p>
-
-                <strong>Luke Ivo</strong>
-
-                <p>November 21, 2026 · 8:00 AM</p>
-            </div>
-
-            <div class="envelope-back"></div>
-            <div class="envelope-front"></div>
-            <div class="envelope-flap"></div>
-
-            <button class="seal" id="openSeal" aria-label="Open the invitation">
-                ✝
-            </button>
-
-        </div>
-
-        <p class="tap-hint" id="tapHint">
-            TAP THE SEAL TO OPEN
-        </p>
-
-    </div>
-</section>
-
-
-<!-- FULL INVITATION WEBSITE -->
-
-<main class="site" id="site">
-
-    <!-- NAVIGATION -->
-
-    <nav class="topbar" aria-label="Main navigation">
-        <a href="#home">HOME</a>
-        <a href="#details">EVENT DETAILS</a>
-        <a href="#gallery">GALLERY</a>
-        <a href="#gifts">GIFT GUIDE</a>
-    </nav>
-
+<div class="landing-page">
 
     <!-- HERO SECTION -->
 
-    <section class="hero" id="home">
+    <section class="hero">
 
-        <div class="hero-photo-wrap">
-
-            <img
-                class="hero-photo"
-                src="./luke%20main.jpeg"
-                alt="Photo of Luke Ivo"
-            >
-
-            <span class="star one">✦</span>
-            <span class="star two">✧</span>
-
+        <!-- MAIN BABY PHOTO -->
+        <div class="main-photo">
+            <img src="luke main.jpeg" alt="Luke Ivo">
         </div>
 
-        <div class="hero-copy">
+        <!-- INVITATION TITLE -->
+        <div class="invitation-text">
 
-            <p class="eyebrow">
-                You are cordially invited to
-            </p>
+            <div class="subtitle">
+                YOU ARE INVITED
+            </div>
 
             <h1>
-                Luke Ivo's<br>Christening
+                Luke Ivo<br>
+                Christening
             </h1>
 
-            <h2>A blessed new beginning</h2>
-
-            <p class="hero-date">
-                SATURDAY · NOVEMBER 21 · 8:00 AM · 2026
-            </p>
-
         </div>
+
+        <!-- DECORATIONS -->
+
+        <div class="bunting">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <div class="star one">★</div>
+        <div class="star two">★</div>
+        <div class="star three">★</div>
+
+        <div class="rattle">🪇</div>
 
     </section>
 
 
-    <!-- EVENT DETAILS -->
+    <!-- EVENT DETAILS AND GALLERY -->
 
-    <section class="section details-section" id="details">
+    <section class="event-section">
 
-        <p class="eyebrow">
-            A day of faith, love & blessings
-        </p>
+        <div class="event-details">
 
-        <h2 class="section-heading">
-            The Celebration
-        </h2>
+            <div class="month">
+                NOVEMBER
+            </div>
 
-        <p class="section-sub">
-            Together with our families, we joyfully invite you to celebrate
-            the Holy Christening of our beloved Luke Ivo P. Fulguerinas.
-            Your presence will make this special day even more meaningful.
-        </p>
+            <div class="date-row">
+                <span>SATURDAY</span>
+                <strong>21</strong>
+                <span>8:00 AM</span>
+            </div>
 
-        <div class="detail-grid">
+            <div class="year">
+                2026
+            </div>
 
-            <article class="detail-card">
-
-                <img
-                    src="./calendar.jpg"
-                    class="detail-image"
-                    alt="Calendar illustration"
-                >
-
-                <h3>Date</h3>
-
-                <p>
-                    Saturday<br>
-                    November 21, 2026
-                </p>
-
-            </article>
-
-
-            <article class="detail-card">
-
-                <img
-                    src="./time.jpg"
-                    class="detail-image"
-                    alt="Clock illustration"
-                >
-
-                <h3>Time</h3>
-
-                <p>
-                    8:00 in the morning
-                </p>
-
-            </article>
-
-
-            <article class="detail-card">
-
-                <img
-                    src="./church.jpg"
-                    class="detail-image"
-                    alt="Church illustration"
-                >
-
-                <h3>Church</h3>
-
-                <p>
-                    New Christ the King Cathedral
-                </p>
-
-            </article>
+            <div class="church">
+                CHURCH: NEW CHRIST THE KING<br>
+                CATHEDRAL
+            </div>
 
         </div>
 
-        <a
-            class="map-link"
-            href="https://www.google.com/maps/search/?api=1&query=New+Christ+the+King+Cathedral"
-            target="_blank"
-            rel="noopener"
-        >
-            View Church Location ↗
-        </a>
 
-    </section>
-
-
-    <!-- PHOTO GALLERY -->
-
-    <section class="section gallery-section" id="gallery">
-
-        <p class="eyebrow">
-            Our little blessing
-        </p>
-
-        <h2 class="section-heading">
-            Luke Ivo's Gallery
-        </h2>
-
-        <p class="section-sub">
-            A few precious moments of our little one.
-        </p>
+        <!-- PHOTO GALLERY -->
 
         <div class="gallery">
 
-            <figure class="polaroid">
+            <div class="polaroid">
+                <img src="luke 1.jpeg" alt="Luke Ivo photo 1">
+            </div>
 
-                <img
-                    src="./luke%20main.jpeg"
-                    alt="Luke Ivo main photo"
-                >
+            <div class="polaroid">
+                <img src="luke 2.jpeg" alt="Luke Ivo photo 2">
+            </div>
 
-                <p>Little sunshine</p>
+            <div class="polaroid">
+                <img src="luke 3.jpeg" alt="Luke Ivo photo 3">
+            </div>
 
-            </figure>
+        </div>
 
-
-            <figure class="polaroid">
-
-                <img
-                    src="./luke%201.jpeg"
-                    alt="Luke Ivo photo 1"
-                >
-
-                <p>Sweetest smile</p>
-
-            </figure>
-
-
-            <figure class="polaroid">
-
-                <img
-                    src="./luke%202.jpeg"
-                    alt="Luke Ivo photo 2"
-                >
-
-                <p>Our little blessing</p>
-
-            </figure>
-
-
-            <figure class="polaroid">
-
-                <img
-                    src="./luke%203.jpeg"
-                    alt="Luke Ivo photo 3"
-                >
-
-                <p>Our precious angel</p>
-
-            </figure>
-
+        <!-- TEDDY BEAR -->
+        <div class="teddy">
+            <img src="teddy.jpg" alt="Teddy bear decoration">
         </div>
 
     </section>
 
 
-    <!-- GIFT GUIDE -->
+    <!-- PERSONAL MESSAGE -->
 
-    <section class="section gift-section" id="gifts">
+    <section class="message-section">
 
-        <p class="eyebrow">
-            A thoughtful little guide
+        <h2>A Blessed New Beginning</h2>
+
+        <p>
+            Together with our families, we joyfully invite
+            you to celebrate the Holy Christening of our
+            beloved baby boy,
+            <strong>Luke Ivo P. Fulguerinas.</strong>
         </p>
 
-        <h2 class="section-heading">
-            Gift Guide
+        <p class="verse">
+            "Let the little children come to me..."
+            <br>
+            — Mark 10:14
+        </p>
+
+        <p style="margin-top: 25px;">
+            Your presence will make this special day
+            even more meaningful. We hope to celebrate
+            this blessed occasion with you!
+        </p>
+
+        <h2 style="margin-top: 30px;">
+            With Love and Blessings 💙
         </h2>
-
-        <p class="gift-intro">
-            If you're considering giving a gift, we would love and appreciate
-            things that we actually need. This helps us make the most of your
-            generosity while keeping things practical and meaningful.
-        </p>
-
-        <div class="gift-grid">
-
-            <article class="gift-card">
-                <div class="gift-emoji">🧻</div>
-                <h3>Unilove Wipes<br>(Unscented)</h3>
-            </article>
-
-            <article class="gift-card">
-                <div class="gift-emoji">🧺</div>
-                <h3>Laundry Detergent</h3>
-            </article>
-
-            <article class="gift-card">
-                <div class="gift-emoji">🧴</div>
-                <h3>Cetaphil Baby<br>Wash & Shampoo</h3>
-            </article>
-
-            <article class="gift-card">
-                <div class="gift-emoji">👶</div>
-                <h3>EQ Dry Tape<br>(Medium)</h3>
-            </article>
-
-            <article class="gift-card">
-                <div class="gift-emoji">🫧</div>
-                <h3>Tiny Buds<br>Baby Bottle Wash</h3>
-            </article>
-
-        </div>
-
-        <p class="gift-note">
-            Just because we give ideas doesn't mean you're obligated to give.
-            Your presence is the most precious gift you can give. Any gift will
-            be warmly appreciated. Thank you for sharing in our joy! 💙
-        </p>
 
     </section>
 
 
-    <!-- THANK YOU SECTION -->
-
-    <section class="closing">
-
-        <img
-            src="./teddy.jpg"
-            class="teddy-decoration"
-            alt="Cute teddy bear decoration"
-        >
-
-        <h2 class="section-heading">
-            Thank You!
-        </h2>
-
-        <p>
-            We are grateful to have you share this beautiful milestone with
-            our family. May this day be filled with love, joy, and God's blessings.
-        </p>
-
-        <p class="signature">
-            With love and blessings
-        </p>
-
-        <p>
-            Luke Ivo P. Fulguerinas and Family
-        </p>
-
-        <a class="back-top" href="#home">
-            Back to Top ↑
-        </a>
-
-    </section>
-
-
-    <!-- FOOTER -->
-
-    <footer class="tiny-footer">
-        Made with love for Luke Ivo's special day · November 21, 2026
+    <footer>
+        Luke Ivo's Holy Christening | November 21, 2026
     </footer>
 
-</main>
-
-
-<!-- JAVASCRIPT -->
-
-<script>
-
-const intro = document.getElementById('intro');
-const site = document.getElementById('site');
-const seal = document.getElementById('openSeal');
-const hint = document.getElementById('tapHint');
-
-let opened = false;
-
-seal.addEventListener('click', () => {
-
-    if (opened) return;
-
-    opened = true;
-
-    intro.classList.add('opening');
-
-    hint.textContent = 'OPENING YOUR INVITATION...';
-
-    window.setTimeout(() => {
-
-        intro.classList.add('hide');
-
-        site.classList.add('visible');
-
-        window.scrollTo({
-            top: 0,
-            behavior: 'auto'
-        });
-
-    }, 1450);
-
-});
-
-</script>
+</div>
 
 </body>
 </html>
