@@ -301,6 +301,82 @@ body {
     height: auto;
 }
 
+/* GIFT GUIDE SECTION */
+
+.gift-guide-section {
+    padding: 60px 5%;
+    background: #ffffff;
+    text-align: center;
+}
+
+.gift-guide-section h2 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 55px;
+    color: #294a80;
+    margin-bottom: 5px;
+}
+
+.gift-subtitle {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    color: #477da6;
+    margin-bottom: 40px;
+}
+
+.gift-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.gift-card {
+    background: #f4f9fd;
+    border: 2px solid #d5ecfa;
+    border-radius: 12px;
+    width: 200px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gift-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
+}
+
+.gift-image-wrapper {
+    width: 100%;
+    height: 160px;
+    background: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gift-image-wrapper img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.gift-card h3 {
+    font-size: 17px;
+    color: #294a80;
+    margin-bottom: 4px;
+}
+
+.gift-card p {
+    font-size: 14px;
+    color: #477da6;
+}
+
 /* LOWER SECTION */
 
 .message-section {
@@ -491,6 +567,23 @@ footer {
     .message-section h2 {
         font-size: 42px;
     }
+
+    .gift-card {
+        width: 140px;
+        padding: 10px;
+    }
+
+    .gift-image-wrapper {
+        height: 110px;
+    }
+
+    .gift-card h3 {
+        font-size: 14px;
+    }
+
+    .gift-card p {
+        font-size: 12px;
+    }
 }
 
 </style>
@@ -589,6 +682,60 @@ footer {
         <!-- TEDDY BEAR -->
         <div class="teddy">
             <img src="teddy.jpg" alt="Teddy bear decoration">
+        </div>
+
+    </section>
+
+
+    <!-- GIFT GUIDE SECTION -->
+
+    <section class="gift-guide-section">
+
+        <h2>Gift Guide</h2>
+        <p class="gift-subtitle">Your presence is the greatest gift! But if you wish to celebrate with a gift, here are a few suggestions:</p>
+
+        <div class="gift-grid">
+
+            <div class="gift-card">
+                <div class="gift-image-wrapper">
+                    <img src="unilove-wipes.jpg" alt="Uni-Love Baby Wipes (Unscented)">
+                </div>
+                <h3>Uni-Love Baby Wipes</h3>
+                <p>Unscented</p>
+            </div>
+
+            <div class="gift-card">
+                <div class="gift-image-wrapper">
+                    <img src="eq-dry-diapers.jpg" alt="EQ Dry Tape (Medium)">
+                </div>
+                <h3>EQ Dry Tape</h3>
+                <p>Medium</p>
+            </div>
+
+            <div class="gift-card">
+                <div class="gift-image-wrapper">
+                    <img src="laundry-detergent.jpg" alt="Laundry Detergent">
+                </div>
+                <h3>Laundry Detergent</h3>
+                <p>Baby Safe</p>
+            </div>
+
+            <div class="gift-card">
+                <div class="gift-image-wrapper">
+                    <img src="tiny-buds-bottle-wash.jpg" alt="Tiny Buds Baby Bottle Wash">
+                </div>
+                <h3>Tiny Buds Bottle Wash</h3>
+                <p>Baby Bottle Wash</p>
+            </div>
+
+            <div class="gift-card">
+                <div class="gift-image-wrapper">
+                    <img src="cetaphil-wash-shampoo.jpg" alt="Cetaphil Wash & Shampoo">
+                </div>
+                <h3>Cetaphil Wash & Shampoo</h3>
+                <p>Gentle Care</p>
+            </div>
+
         </div>
 
     </section>
