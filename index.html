@@ -27,6 +27,60 @@ body {
 }
 
 /* ==========================================
+   FLOATING BUBBLES CONTAINER & ANIMATIONS
+   ========================================== */
+
+.bubbles-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 9998;
+    overflow: hidden;
+}
+
+.bubble {
+    position: absolute;
+    bottom: -60px;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9), rgba(184, 223, 255, 0.4) 60%, rgba(255, 255, 255, 0.7) 100%);
+    border: 1.5px solid rgba(255, 255, 255, 0.85);
+    border-radius: 50%;
+    box-shadow: inset -2px -2px 6px rgba(41, 74, 128, 0.1), 0 4px 10px rgba(255, 255, 255, 0.5);
+    animation: riseUp 8s linear infinite;
+}
+
+@keyframes riseUp {
+    0% {
+        transform: translateY(0) translateX(0) scale(0.8);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.85;
+    }
+    50% {
+        transform: translateY(-50vh) translateX(25px) scale(1.05);
+    }
+    90% {
+        opacity: 0.85;
+    }
+    100% {
+        transform: translateY(-110vh) translateX(-20px) scale(1.15);
+        opacity: 0;
+    }
+}
+
+/* Different sizes and floating speeds for variety */
+.bubble:nth-child(1) { left: 8%; width: 35px; height: 35px; animation-duration: 7s; animation-delay: 0s; }
+.bubble:nth-child(2) { left: 22%; width: 50px; height: 50px; animation-duration: 9s; animation-delay: 1.5s; }
+.bubble:nth-child(3) { left: 35%; width: 25px; height: 25px; animation-duration: 6s; animation-delay: 3s; }
+.bubble:nth-child(4) { left: 50%; width: 60px; height: 60px; animation-duration: 10s; animation-delay: 0.5s; }
+.bubble:nth-child(5) { left: 65%; width: 30px; height: 30px; animation-duration: 7.5s; animation-delay: 2s; }
+.bubble:nth-child(6) { left: 78%; width: 45px; height: 45px; animation-duration: 8.5s; animation-delay: 4s; }
+.bubble:nth-child(7) { left: 90%; width: 28px; height: 28px; animation-duration: 6.5s; animation-delay: 1s; }
+
+/* ==========================================
    GRAND & LUXURIOUS CUTE ENVELOPE OVERLAY
    ========================================== */
 
@@ -891,6 +945,17 @@ footer {
 
 <body>
 
+<!-- GLOBAL FLOATING BUBBLES -->
+<div class="bubbles-container">
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+</div>
+
 <!-- CUTE & GRAND ANIMATED ENVELOPE OVERLAY -->
 <div class="envelope-wrapper" id="envelopeWrapper">
 
@@ -915,7 +980,7 @@ footer {
         <div class="envelope-pocket"></div>
     </div>
 
-    <button class="open-btn" onclick="openEnvelope(event)">OPEN INVITATION 💌</button>
+    <button class="open-btn" onclick="openEnvelope(event)">OPEN INVITATION</button>
 
 </div>
 
