@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Luke Ivo's Christening</title>
+<title>Luke Ivo's Christening Invitation</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Great+Vibes&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
 
@@ -26,7 +26,170 @@ body {
     overflow-x: hidden;
 }
 
-/* MAIN LANDING PAGE */
+/* ==========================================
+   ENVELOPE OVERLAY & ANIMATION STYLES
+   ========================================== */
+
+.envelope-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(circle, #e4f3ff 0%, #b8dcf8 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 1s ease, visibility 1s ease;
+}
+
+.envelope-wrapper.fade-out {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.envelope-container {
+    position: relative;
+    width: 320px;
+    height: 220px;
+    background: #a1ceee;
+    border-radius: 8px;
+    box-shadow: 0 15px 35px rgba(41, 74, 128, 0.25);
+    cursor: pointer;
+    perspective: 1000px;
+    transition: transform 0.3s ease;
+}
+
+.envelope-container:hover {
+    transform: translateY(-5px);
+}
+
+/* Front Pocket of Envelope */
+.envelope-pocket {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 160px solid #7cb9e5;
+    border-right: 160px solid #7cb9e5;
+    border-bottom: 120px solid #6aaee0;
+    border-top: 100px solid transparent;
+    border-radius: 0 0 8px 8px;
+    z-index: 3;
+}
+
+/* Flap of Envelope */
+.envelope-flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 160px solid transparent;
+    border-right: 160px solid transparent;
+    border-top: 130px solid #8ec5ed;
+    transform-origin: top center;
+    transition: transform 0.6s ease-in-out;
+    z-index: 4;
+}
+
+.envelope-container.open .envelope-flap {
+    transform: rotateX(180deg);
+    z-index: 1;
+}
+
+/* Inner Invitation Card Preview */
+.envelope-card {
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    width: 280px;
+    height: 180px;
+    background: #ffffff;
+    border-radius: 6px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: transform 0.8s ease-in-out;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.envelope-container.open .envelope-card {
+    transform: translateY(-120px);
+}
+
+.envelope-card h2 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 32px;
+    color: #294a80;
+}
+
+.envelope-card p {
+    font-family: 'Amatic SC', cursive;
+    font-size: 22px;
+    letter-spacing: 2px;
+    color: #477da6;
+    margin-top: 5px;
+}
+
+/* Wax Seal Button */
+.wax-seal {
+    position: absolute;
+    top: 110px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 55px;
+    height: 55px;
+    background: #294a80;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    font-size: 22px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 5;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.envelope-container.open .wax-seal {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5);
+}
+
+/* Click Helper Button */
+.open-btn {
+    margin-top: 35px;
+    padding: 12px 30px;
+    font-family: 'Amatic SC', cursive;
+    font-size: 26px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    color: #ffffff;
+    background: #294a80;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(41, 74, 128, 0.3);
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.open-btn:hover {
+    background: #477da6;
+    transform: scale(1.05);
+}
+
+/* ==========================================
+   MAIN LANDING PAGE STYLES
+   ========================================== */
 
 .landing-page {
     position: relative;
@@ -589,6 +752,27 @@ footer {
 
 <body>
 
+<!-- CLICKABLE ENVELOPE OVERLAY -->
+<div class="envelope-wrapper" id="envelopeWrapper">
+
+    <div class="envelope-container" id="envelopeContainer" onclick="openEnvelope()">
+        <div class="envelope-flap"></div>
+        <div class="wax-seal">💙</div>
+        
+        <div class="envelope-card">
+            <h2>Luke Ivo</h2>
+            <p>Christening Invitation</p>
+        </div>
+
+        <div class="envelope-pocket"></div>
+    </div>
+
+    <button class="open-btn" onclick="openEnvelope()">OPEN INVITATION</button>
+
+</div>
+
+
+<!-- MAIN LANDING PAGE -->
 <div class="landing-page">
 
     <!-- HERO SECTION -->
@@ -696,7 +880,7 @@ footer {
 
             <div class="gift-card">
                 <div class="gift-image-wrapper">
-                    <img src="./tiny-buds-bottle-wash.png" alt="Uni-Love Baby Wipes (Unscented)">
+                    <img src="./unilove-wipes.png" alt="Uni-Love Baby Wipes (Unscented)">
                 </div>
                 <h3>Uni-Love Baby Wipes</h3>
                 <p>Unscented</p>
@@ -776,6 +960,24 @@ footer {
     </footer>
 
 </div>
+
+<script>
+function openEnvelope() {
+    const envelope = document.getElementById('envelopeContainer');
+    const wrapper = document.getElementById('envelopeWrapper');
+
+    // Prevent re-triggering if already opened
+    if (envelope.classList.contains('open')) return;
+
+    // 1. Flip open flap & lift inner card
+    envelope.classList.add('open');
+
+    // 2. Smoothly fade out overlay screen to reveal full page
+    setTimeout(() => {
+        wrapper.classList.add('fade-out');
+    }, 1100);
+}
+</script>
 
 </body>
 </html>
