@@ -27,7 +27,7 @@ body {
 }
 
 /* ==========================================
-   ENVELOPE OVERLAY & ANIMATION STYLES
+   CUTEST & AESTHETIC ENVELOPE OVERLAY
    ========================================== */
 
 .envelope-wrapper {
@@ -36,13 +36,14 @@ body {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: radial-gradient(circle, #e4f3ff 0%, #b8dcf8 100%);
+    background: radial-gradient(circle, #f0f7ff 0%, #c4e4ff 100%);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     z-index: 9999;
     transition: opacity 1s ease, visibility 1s ease;
+    overflow: hidden;
 }
 
 .envelope-wrapper.fade-out {
@@ -51,50 +52,60 @@ body {
     pointer-events: none;
 }
 
+/* Floating Background Elements */
+.bg-floating-element {
+    position: absolute;
+    font-size: 38px;
+    opacity: 0.35;
+    animation: floatAnim 6s ease-in-out infinite alternate;
+    pointer-events: none;
+    user-select: none;
+}
+
+.bg-floating-element:nth-child(1) { top: 12%; left: 10%; animation-delay: 0s; font-size: 55px; }
+.bg-floating-element:nth-child(2) { top: 20%; right: 12%; animation-delay: 1.5s; font-size: 48px; }
+.bg-floating-element:nth-child(3) { bottom: 15%; left: 14%; animation-delay: 3s; font-size: 50px; }
+.bg-floating-element:nth-child(4) { bottom: 22%; right: 16%; animation-delay: 2s; font-size: 42px; }
+.bg-floating-element:nth-child(5) { top: 8%; right: 40%; animation-delay: 2.5s; font-size: 35px; }
+
+@keyframes floatAnim {
+    0% { transform: translateY(0px) rotate(0deg); }
+    100% { transform: translateY(-22px) rotate(12deg); }
+}
+
+/* Envelope Container Structure */
 .envelope-container {
     position: relative;
-    width: 320px;
-    height: 220px;
-    background: #a1ceee;
-    border-radius: 8px;
-    box-shadow: 0 15px 35px rgba(41, 74, 128, 0.25);
+    width: 340px;
+    height: 230px;
+    background: #b5ddfd;
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(41, 74, 128, 0.2), inset 0 0 0 6px #ffffff;
     cursor: pointer;
     perspective: 1000px;
-    transition: transform 0.3s ease;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background-image: radial-gradient(#ffffff 20%, transparent 20%);
+    background-size: 16px 16px;
 }
 
 .envelope-container:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px) scale(1.02);
 }
 
-/* Front Pocket of Envelope */
-.envelope-pocket {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 0;
-    border-left: 160px solid #7cb9e5;
-    border-right: 160px solid #7cb9e5;
-    border-bottom: 120px solid #6aaee0;
-    border-top: 100px solid transparent;
-    border-radius: 0 0 8px 8px;
-    z-index: 3;
-}
-
-/* Flap of Envelope */
+/* Scalloped / Decorative Envelope Flap */
 .envelope-flap {
     position: absolute;
     top: 0;
     left: 0;
     width: 0;
     height: 0;
-    border-left: 160px solid transparent;
-    border-right: 160px solid transparent;
-    border-top: 130px solid #8ec5ed;
+    border-left: 170px solid transparent;
+    border-right: 170px solid transparent;
+    border-top: 140px solid #a3d4fc;
     transform-origin: top center;
-    transition: transform 0.6s ease-in-out;
+    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 4;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.06));
 }
 
 .envelope-container.open .envelope-flap {
@@ -102,19 +113,35 @@ body {
     z-index: 1;
 }
 
-/* Inner Invitation Card Preview */
+/* Front Pocket */
+.envelope-pocket {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 170px solid #8ec8f6;
+    border-right: 170px solid #8ec8f6;
+    border-bottom: 125px solid #7cbef3;
+    border-top: 105px solid transparent;
+    border-radius: 0 0 16px 16px;
+    z-index: 3;
+}
+
+/* Cute Inner Card */
 .envelope-card {
     position: absolute;
     top: 15px;
     left: 20px;
-    width: 280px;
-    height: 180px;
+    width: 300px;
+    height: 190px;
     background: #ffffff;
-    border-radius: 6px;
-    padding: 20px;
+    border-radius: 12px;
+    padding: 15px;
     text-align: center;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    transition: transform 0.8s ease-in-out;
+    border: 2px dashed #9bcbf5;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 2;
     display: flex;
     flex-direction: column;
@@ -123,68 +150,100 @@ body {
 }
 
 .envelope-container.open .envelope-card {
-    transform: translateY(-120px);
+    transform: translateY(-135px);
+}
+
+.envelope-card .badge {
+    font-family: 'Amatic SC', cursive;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #477da6;
+    background: #eef7ff;
+    padding: 2px 12px;
+    border-radius: 12px;
+    margin-bottom: 5px;
 }
 
 .envelope-card h2 {
     font-family: 'Great Vibes', cursive;
-    font-size: 32px;
+    font-size: 36px;
     color: #294a80;
+    line-height: 1.1;
 }
 
 .envelope-card p {
     font-family: 'Amatic SC', cursive;
     font-size: 22px;
     letter-spacing: 2px;
-    color: #477da6;
-    margin-top: 5px;
+    color: #294a80;
 }
 
-/* Wax Seal Button */
+/* 3D Wax Seal Button */
 .wax-seal {
     position: absolute;
-    top: 110px;
+    top: 115px;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 55px;
-    height: 55px;
-    background: #294a80;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #3d6ca7, #244475);
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     color: #ffffff;
-    font-size: 22px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    font-size: 26px;
+    box-shadow: 0 6px 14px rgba(41, 74, 128, 0.35), inset 0 2px 4px rgba(255,255,255,0.4);
     z-index: 5;
     transition: opacity 0.4s ease, transform 0.4s ease;
+    animation: pulseHeart 2s infinite alternate;
+}
+
+@keyframes pulseHeart {
+    0% { transform: translate(-50%, -50%) scale(1); }
+    100% { transform: translate(-50%, -50%) scale(1.08); }
 }
 
 .envelope-container.open .wax-seal {
     opacity: 0;
-    transform: translate(-50%, -50%) scale(0.5);
+    transform: translate(-50%, -50%) scale(0.3);
+    animation: none;
 }
 
-/* Click Helper Button */
+/* Cute Action Button */
 .open-btn {
     margin-top: 35px;
-    padding: 12px 30px;
+    padding: 14px 34px;
     font-family: 'Amatic SC', cursive;
-    font-size: 26px;
+    font-size: 28px;
     font-weight: bold;
-    letter-spacing: 3px;
+    letter-spacing: 4px;
     color: #ffffff;
-    background: #294a80;
-    border: none;
-    border-radius: 30px;
+    background: linear-gradient(135deg, #477da6, #294a80);
+    border: 3px solid #ffffff;
+    border-radius: 40px;
     cursor: pointer;
-    box-shadow: 0 5px 15px rgba(41, 74, 128, 0.3);
-    transition: background 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 8px 20px rgba(41, 74, 128, 0.25);
+    transition: all 0.3s ease;
 }
 
 .open-btn:hover {
-    background: #477da6;
-    transform: scale(1.05);
+    transform: translateY(-3px) scale(1.04);
+    box-shadow: 0 12px 25px rgba(41, 74, 128, 0.35);
+}
+
+/* Sparkle particles on open */
+.sparkle {
+    position: absolute;
+    pointer-events: none;
+    font-size: 20px;
+    animation: sparklePop 1s ease-out forwards;
+}
+
+@keyframes sparklePop {
+    0% { opacity: 1; transform: translate(0, 0) scale(0.5); }
+    100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(1.4); }
 }
 
 /* ==========================================
@@ -752,22 +811,30 @@ footer {
 
 <body>
 
-<!-- CLICKABLE ENVELOPE OVERLAY -->
+<!-- CUTE ANIMATED ENVELOPE OVERLAY -->
 <div class="envelope-wrapper" id="envelopeWrapper">
 
-    <div class="envelope-container" id="envelopeContainer" onclick="openEnvelope()">
+    <!-- Floating Baby Decorations -->
+    <div class="bg-floating-element">☁️</div>
+    <div class="bg-floating-element">🧸</div>
+    <div class="bg-floating-element">🪇</div>
+    <div class="bg-floating-element">🍼</div>
+    <div class="bg-floating-element">✨</div>
+
+    <div class="envelope-container" id="envelopeContainer" onclick="openEnvelope(event)">
         <div class="envelope-flap"></div>
-        <div class="wax-seal">💙</div>
+        <div class="wax-seal">🤍</div>
         
         <div class="envelope-card">
+            <span class="badge">HOLY CHRISTENING</span>
             <h2>Luke Ivo</h2>
-            <p>Christening Invitation</p>
+            <p>You Are Invited!</p>
         </div>
 
         <div class="envelope-pocket"></div>
     </div>
 
-    <button class="open-btn" onclick="openEnvelope()">OPEN INVITATION</button>
+    <button class="open-btn" onclick="openEnvelope(event)">CLICK TO OPEN 💌</button>
 
 </div>
 
@@ -962,17 +1029,44 @@ footer {
 </div>
 
 <script>
-function openEnvelope() {
+function createSparkles(x, y) {
+    const wrapper = document.getElementById('envelopeWrapper');
+    const stars = ['✨', '⭐', '💙', '☁️'];
+    
+    for (let i = 0; i < 12; i++) {
+        const sparkle = document.createElement('span');
+        sparkle.className = 'sparkle';
+        sparkle.innerText = stars[Math.floor(Math.random() * stars.length)];
+        
+        const dx = (Math.random() - 0.5) * 200 + 'px';
+        const dy = (Math.random() - 0.5) * 200 - 50 + 'px';
+        
+        sparkle.style.setProperty('--dx', dx);
+        sparkle.style.setProperty('--dy', dy);
+        sparkle.style.left = x + 'px';
+        sparkle.style.top = y + 'px';
+        
+        wrapper.appendChild(sparkle);
+        
+        setTimeout(() => sparkle.remove(), 1000);
+    }
+}
+
+function openEnvelope(event) {
     const envelope = document.getElementById('envelopeContainer');
     const wrapper = document.getElementById('envelopeWrapper');
 
-    // Prevent re-triggering if already opened
     if (envelope.classList.contains('open')) return;
 
-    // 1. Flip open flap & lift inner card
+    // Trigger sparkle effect at click position
+    const clickX = event.clientX || window.innerWidth / 2;
+    const clickY = event.clientY || window.innerHeight / 2;
+    createSparkles(clickX, clickY);
+
+    // Open flap & pull card out
     envelope.classList.add('open');
 
-    // 2. Smoothly fade out overlay screen to reveal full page
+    // Fade out overlay screen to reveal full invitation
     setTimeout(() => {
         wrapper.classList.add('fade-out');
     }, 1100);
