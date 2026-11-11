@@ -1,0 +1,637 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Luke Ivo's Christening</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Great+Vibes&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Playfair Display', serif;
+    background: #c5e4fc;
+    color: #294c80;
+    overflow-x: hidden;
+}
+
+/* MAIN LANDING PAGE */
+
+.landing-page {
+    position: relative;
+    width: 90%;
+    max-width: 1600px;
+    min-height: 100vh;
+    margin: auto;
+    background: #c2e2fa;
+    overflow: hidden;
+}
+
+/* STRIPED BACKGROUND */
+
+.hero {
+    position: relative;
+    min-height: 510px;
+    background: repeating-linear-gradient(
+        90deg,
+        #ffffff 0px,
+        #ffffff 85px,
+        #c3e4fc 85px,
+        #c3e4fc 170px
+    );
+}
+
+/* NAVY DIVIDER */
+
+.hero::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    background: #294a80;
+}
+
+/* MAIN BABY PHOTO */
+
+.main-photo {
+    position: absolute;
+    top: 65px;
+    left: 7%;
+    width: 465px;
+    height: 465px;
+    border-radius: 50%;
+    border: 17px solid #285775;
+    overflow: hidden;
+    background: #d5ecfa;
+    z-index: 2;
+}
+
+.main-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* HERO TEXT */
+
+.invitation-text {
+    position: absolute;
+    top: 0;
+    right: 5%;
+    width: 48%;
+    text-align: center;
+    z-index: 3;
+}
+
+.invitation-text .subtitle {
+    font-family: 'Amatic SC', cursive;
+    font-size: clamp(35px, 5vw, 65px);
+    font-weight: bold;
+    letter-spacing: 8px;
+    color: #294a80;
+    background: #ffffff;
+    display: inline-block;
+    padding: 0 10px;
+}
+
+.invitation-text h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(75px, 10vw, 145px);
+    line-height: .95;
+    color: #294a80;
+    text-shadow: 4px 5px 0 white;
+    margin-top: 20px;
+}
+
+/* DECORATIONS */
+
+.star {
+    position: absolute;
+    color: #75b5e6;
+    text-shadow: 2px 3px 4px #7baed2;
+    z-index: 4;
+}
+
+.star.one {
+    top: 330px;
+    left: 3%;
+    font-size: 65px;
+}
+
+.star.two {
+    top: 395px;
+    left: 10%;
+    font-size: 100px;
+}
+
+.star.three {
+    top: 365px;
+    left: 20%;
+    font-size: 55px;
+}
+
+.rattle {
+    position: absolute;
+    left: 39%;
+    bottom: 25px;
+    font-size: 120px;
+    transform: rotate(-35deg);
+    z-index: 5;
+}
+
+/* BUNTING */
+
+.bunting {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 230px;
+    height: 100px;
+    z-index: 4;
+    display: flex;
+    justify-content: space-around;
+}
+
+.bunting span {
+    width: 40px;
+    height: 75px;
+    background: #5c9ab1;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 75%, 0 100%);
+}
+
+.bunting span:nth-child(2) {
+    background: #a4d5dc;
+    height: 95px;
+}
+
+.bunting span:nth-child(3) {
+    background: #3d788c;
+}
+
+/* EVENT SECTION */
+
+.event-section {
+    position: relative;
+    min-height: 450px;
+    padding: 80px 5% 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 30px;
+    background: #c2e2fa;
+}
+
+/* EVENT DETAILS */
+
+.event-details {
+    flex: 1;
+    max-width: 550px;
+    text-align: center;
+    padding-top: 5px;
+}
+
+.event-details .month {
+    font-family: 'Amatic SC', cursive;
+    font-size: 38px;
+    letter-spacing: 7px;
+    color: #294a80;
+    margin-bottom: 5px;
+}
+
+.date-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.date-row span {
+    font-family: 'Amatic SC', cursive;
+    font-size: 32px;
+    letter-spacing: 4px;
+    border-top: 2px solid #477da6;
+    border-bottom: 2px solid #477da6;
+    padding: 8px 0;
+}
+
+.date-row strong {
+    font-size: 70px;
+    font-weight: normal;
+}
+
+.year {
+    font-family: 'Amatic SC', cursive;
+    font-size: 40px;
+    letter-spacing: 8px;
+    margin: 8px 0 20px;
+}
+
+.church {
+    font-family: 'Amatic SC', cursive;
+    font-size: 35px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    line-height: 1.5;
+}
+
+/* PHOTO GALLERY */
+
+.gallery {
+    flex: 1.2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding-top: 0;
+}
+
+.polaroid {
+    width: 31%;
+    background: #fffdf6;
+    padding: 10px 10px 35px;
+    box-shadow: 0 5px 15px #0002;
+    transform: rotate(-10deg);
+    transition: .4s;
+}
+
+.polaroid:nth-child(2) {
+    transform: rotate(2deg) translateY(45px);
+}
+
+.polaroid:nth-child(3) {
+    transform: rotate(12deg) translateY(-25px);
+}
+
+.polaroid:hover {
+    transform: rotate(0deg) translateY(-10px) scale(1.05);
+    z-index: 5;
+}
+
+.polaroid img {
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+}
+
+/* TEDDY BEAR */
+
+.teddy {
+    position: absolute;
+    right: 2%;
+    bottom: -10px;
+    width: 180px;
+    z-index: 2;
+}
+
+.teddy img {
+    width: 100%;
+    height: auto;
+}
+
+/* LOWER SECTION */
+
+.message-section {
+    text-align: center;
+    padding: 75px 20px;
+    background: #eaf6ff;
+}
+
+.message-section h2 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 55px;
+    color: #294a80;
+    margin-bottom: 15px;
+}
+
+.message-section p {
+    font-size: 17px;
+    line-height: 1.9;
+    max-width: 650px;
+    margin: auto;
+}
+
+.message-section .verse {
+    margin-top: 25px;
+    font-style: italic;
+    color: #477da6;
+}
+
+footer {
+    background: #294a80;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+}
+
+/* RESPONSIVE DESIGN */
+
+@media (max-width: 1000px) {
+
+    .landing-page {
+        width: 100%;
+    }
+
+    .hero {
+        min-height: 700px;
+    }
+
+    .main-photo {
+        width: 330px;
+        height: 330px;
+        left: 50%;
+        top: 40px;
+        transform: translateX(-50%);
+    }
+
+    .invitation-text {
+        width: 100%;
+        right: 0;
+        top: 390px;
+    }
+
+    .invitation-text h1 {
+        font-size: 90px;
+    }
+
+    .invitation-text .subtitle {
+        font-size: 40px;
+    }
+
+    .rattle {
+        display: none;
+    }
+
+    .event-section {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .event-details {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .gallery {
+        width: 90%;
+        margin: 50px auto;
+    }
+
+    .polaroid img {
+        height: 180px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .hero {
+        min-height: 580px;
+    }
+
+    .main-photo {
+        width: 260px;
+        height: 260px;
+        border-width: 12px;
+    }
+
+    .invitation-text {
+        top: 320px;
+    }
+
+    .invitation-text h1 {
+        font-size: 68px;
+    }
+
+    .invitation-text .subtitle {
+        font-size: 30px;
+        letter-spacing: 5px;
+    }
+
+    .bunting {
+        width: 120px;
+        transform: scale(.7);
+        transform-origin: top right;
+    }
+
+    .star.one {
+        top: 250px;
+        font-size: 40px;
+    }
+
+    .star.two {
+        top: 280px;
+        font-size: 60px;
+    }
+
+    .star.three {
+        top: 280px;
+        font-size: 35px;
+    }
+
+    .event-section {
+        padding: 55px 15px;
+    }
+
+    .event-details .month {
+        font-size: 32px;
+    }
+
+    .date-row {
+        gap: 8px;
+    }
+
+    .date-row span {
+        font-size: 23px;
+        letter-spacing: 2px;
+    }
+
+    .date-row strong {
+        font-size: 55px;
+    }
+
+    .year {
+        font-size: 32px;
+    }
+
+    .church {
+        font-size: 27px;
+    }
+
+    .gallery {
+        gap: 5px;
+        width: 100%;
+    }
+
+    .polaroid {
+        padding: 6px 6px 20px;
+    }
+
+    .polaroid img {
+        height: 115px;
+    }
+
+    .teddy {
+        width: 95px;
+        opacity: .8;
+    }
+
+    .message-section h2 {
+        font-size: 42px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="landing-page">
+
+    <!-- HERO SECTION -->
+
+    <section class="hero">
+
+        <!-- MAIN BABY PHOTO -->
+        <div class="main-photo">
+            <img src="images/luke-main.jpg" alt="Luke Ivo">
+        </div>
+
+        <!-- INVITATION TITLE -->
+        <div class="invitation-text">
+
+            <div class="subtitle">
+                YOU ARE INVITED
+            </div>
+
+            <h1>
+                Luke Ivo<br>
+                Christening
+            </h1>
+
+        </div>
+
+        <!-- DECORATIONS -->
+
+        <div class="bunting">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <div class="star one">★</div>
+        <div class="star two">★</div>
+        <div class="star three">★</div>
+
+        <div class="rattle">🪇</div>
+
+    </section>
+
+
+    <!-- EVENT DETAILS AND GALLERY -->
+
+    <section class="event-section">
+
+        <div class="event-details">
+
+            <div class="month">
+                NOVEMBER
+            </div>
+
+            <div class="date-row">
+                <span>SATURDAY</span>
+                <strong>21</strong>
+                <span>8:00 AM</span>
+            </div>
+
+            <div class="year">
+                2026
+            </div>
+
+            <div class="church">
+                CHURCH: NEW CHRIST THE KING<br>
+                CATHEDRAL
+            </div>
+
+        </div>
+
+
+        <!-- PHOTO GALLERY -->
+
+        <div class="gallery">
+
+            <div class="polaroid">
+                <img src="images/luke-1.jpg" alt="Luke Ivo photo 1">
+            </div>
+
+            <div class="polaroid">
+                <img src="images/luke-2.jpg" alt="Luke Ivo photo 2">
+            </div>
+
+            <div class="polaroid">
+                <img src="images/luke-3.jpg" alt="Luke Ivo photo 3">
+            </div>
+
+        </div>
+
+        <!-- TEDDY BEAR -->
+        <div class="teddy">
+            <img src="images/teddy.png" alt="Teddy bear decoration">
+        </div>
+
+    </section>
+
+
+    <!-- PERSONAL MESSAGE -->
+
+    <section class="message-section">
+
+        <h2>A Blessed New Beginning</h2>
+
+        <p>
+            Together with our families, we joyfully invite
+            you to celebrate the Holy Christening of our
+            beloved baby boy,
+            <strong>Luke Ivo P. Fulguerinas.</strong>
+        </p>
+
+        <p class="verse">
+            "Let the little children come to me..."
+            <br>
+            — Mark 10:14
+        </p>
+
+        <p style="margin-top: 25px;">
+            Your presence will make this special day
+            even more meaningful. We hope to celebrate
+            this blessed occasion with you!
+        </p>
+
+        <h2 style="margin-top: 30px;">
+            With Love and Blessings 💙
+        </h2>
+
+    </section>
+
+
+    <footer>
+        Luke Ivo's Holy Christening | November 21, 2026
+    </footer>
+
+</div>
+
+</body>
+</html>
